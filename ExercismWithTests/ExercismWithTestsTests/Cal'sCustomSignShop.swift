@@ -82,6 +82,6 @@ final class Cal_sCustomSignShop: XCTestCase {
         XCTAssertEqual(costOf(sign: graduationFor(name: "Isabel", year: 1988)), 94)
     }
     func testCostOfSignEmpty() {
-        XCTAssertEqual(costOf(sign: "), 20)
+        XCTAssertEqual(costOf(sign: ""), 20)
     }
 }
