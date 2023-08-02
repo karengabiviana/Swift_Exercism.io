@@ -30,6 +30,14 @@ func insert(_ newCard: Int, atTopOf stack: [Int]) -> [Int] {
     return copyStack
 }
 
+//Task 4 - Implement the function removeCard(at:from:) that returns a copy of the stack which has had the card at position index removed. If the given index is not a valid index in the stack, the original stack should be returned, unchanged.
+func removeCard(at index: Int, from stack: [Int]) -> [Int] {
+    var copyStack = stack
+    if index >= 0 && index <= copyStack.count {
+        copyStack.remove(at: index)
+    }
+    return copyStack
+}
 final class MagicianInTraining: XCTestCase {
     //Task 1 Tests
     func testGetCard() {
@@ -52,5 +60,16 @@ final class MagicianInTraining: XCTestCase {
         let stack = [1, 7, 5, 8, 3, 9, 6, 4, 2]
         XCTAssertEqual(insert(10, atTopOf: stack), [1, 7, 5, 8, 3, 9, 6, 4, 2, 10])
     }
-
+    // Task 4 Tests
+    func testRemoveCard() {
+        XCTAssertEqual(removeCard(at: 2, from: [9, 2, 1, 6, 5, 7, 4, 3, 8]), [9, 2, 6, 5, 7, 4, 3, 8])
+    }
+    func testRemoveCardindexTooLow() {
+        let stack = [9, 2, 1, 6, 5, 7, 4, 3, 8]
+        XCTAssertEqual(removeCard(at: -2, from: stack), stack)
+    }
+    func testRemoveCardindexTooHigh() {
+        let stack = [9, 2, 1, 6, 5, 7, 4, 3, 8]
+        XCTAssertEqual(removeCard(at: 20, from: stack), stack)
+    }
 }
