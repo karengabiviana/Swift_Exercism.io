@@ -23,6 +23,13 @@ func setCard(at index: Int, in stack: [Int], to newCard: Int) -> [Int] {
         }
     return copyStack
 }
+//Task 3 - Implement the function insert(_:atTopOf:) that returns a copy of the stack with the new card provided added to the top of the stack.
+func insert(_ newCard: Int, atTopOf stack: [Int]) -> [Int] {
+    var copyStack = stack
+    copyStack.append(newCard)
+    return copyStack
+}
+
 final class MagicianInTraining: XCTestCase {
     //Task 1 Tests
     func testGetCard() {
@@ -40,4 +47,10 @@ final class MagicianInTraining: XCTestCase {
         let stack = [9, 4, 3, 6, 1, 7, 2, 8, 5]
         XCTAssertEqual(setCard(at: 50, in: stack, to: 10), stack)
     }
+    //Task 3 Tests
+    func testInsertAtTop() {
+        let stack = [1, 7, 5, 8, 3, 9, 6, 4, 2]
+        XCTAssertEqual(insert(10, atTopOf: stack), [1, 7, 5, 8, 3, 9, 6, 4, 2, 10])
+    }
+
 }
