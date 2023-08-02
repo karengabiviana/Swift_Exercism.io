@@ -15,6 +15,7 @@
 		D6E360892A71A57100BB8050 /* Cal'sCustomSignShop.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E360882A71A57100BB8050 /* Cal'sCustomSignShop.swift */; };
 		D6FC5EDE2A731415008C745E /* SecretAgentDoubleNull0111.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FC5EDD2A731415008C745E /* SecretAgentDoubleNull0111.swift */; };
 		D6FC61DA2A79B953008C745E /* VexingVehiclePurchase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FC61D92A79B953008C745E /* VexingVehiclePurchase.swift */; };
+		D6FC61DC2A7AA40D008C745E /* MagicianInTraining.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FC61DB2A7AA40D008C745E /* MagicianInTraining.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +38,7 @@
 		D6E360882A71A57100BB8050 /* Cal'sCustomSignShop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cal'sCustomSignShop.swift"; sourceTree = "<group>"; };
 		D6FC5EDD2A731415008C745E /* SecretAgentDoubleNull0111.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretAgentDoubleNull0111.swift; sourceTree = "<group>"; };
 		D6FC61D92A79B953008C745E /* VexingVehiclePurchase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VexingVehiclePurchase.swift; sourceTree = "<group>"; };
+		D6FC61DB2A7AA40D008C745E /* MagicianInTraining.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicianInTraining.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,7 @@
 				D6E360882A71A57100BB8050 /* Cal'sCustomSignShop.swift */,
 				D6FC5EDD2A731415008C745E /* SecretAgentDoubleNull0111.swift */,
 				D6FC61D92A79B953008C745E /* VexingVehiclePurchase.swift */,
+				D6FC61DB2A7AA40D008C745E /* MagicianInTraining.swift */,
 			);
 			path = ExercismWithTestsTests;
 			sourceTree = "<group>";
@@ -216,6 +219,7 @@
 				D6E360892A71A57100BB8050 /* Cal'sCustomSignShop.swift in Sources */,
 				D6E360872A70758900BB8050 /* FreelancerRates.swift in Sources */,
 				D6FC5EDE2A731415008C745E /* SecretAgentDoubleNull0111.swift in Sources */,
+				D6FC61DC2A7AA40D008C745E /* MagicianInTraining.swift in Sources */,
 				D606E78A2A69BCC000449145 /* LayersOfLasagna.swift in Sources */,
 				D6FC61DA2A79B953008C745E /* VexingVehiclePurchase.swift in Sources */,
 				D606E77F2A69B46800449145 /* HelloWorld.swift in Sources */,
