@@ -38,6 +38,12 @@ func removeCard(at index: Int, from stack: [Int]) -> [Int] {
     }
     return copyStack
 }
+
+//Task 5 - Implement the function removeTopCard(_:) that returns a copy of the stack which has had the card at the top of the stack removed. If the given stack is empty, the original stack should be returned, unchanged.
+func removeTopCard(_ stack: [Int]) -> [Int] {
+    var copyStack = stack
+    return removeCard(at: copyStack.count - 1, from: copyStack)
+}
 final class MagicianInTraining: XCTestCase {
     //Task 1 Tests
     func testGetCard() {
@@ -71,5 +77,12 @@ final class MagicianInTraining: XCTestCase {
     func testRemoveCardindexTooHigh() {
         let stack = [9, 2, 1, 6, 5, 7, 4, 3, 8]
         XCTAssertEqual(removeCard(at: 20, from: stack), stack)
+    }
+    //Task 5 Tests
+    func testRemoveTopCard() {
+        XCTAssertEqual( removeTopCard([2, 7, 4, 6, 9, 1, 8, 3, 5]), [2, 7, 4, 6, 9, 1, 8, 3])
+    }
+    func testRemoveTopCardEmptyStack() {
+        XCTAssertEqual( removeTopCard([]), [])
     }
 }
