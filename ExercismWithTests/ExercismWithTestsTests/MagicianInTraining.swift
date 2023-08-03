@@ -52,6 +52,15 @@ func insert(_ newCard: Int, atBottomOf stack: [Int]) -> [Int] {
     return copyStack
 }
 
+//Task 7 - Implement the function removeBottomCard(_:) that returns a copy of the stack which has had the card at the bottom of the stack removed. If the given stack is empty, the original stack should be returned, unchanged.
+func removeBottomCard(_ stack: [Int]) -> [Int] {
+    var copyStack = stack
+    if !stack.isEmpty{
+        copyStack.remove(at: 0)
+    }
+    return copyStack
+}
+
 final class MagicianInTraining: XCTestCase {
     //Task 1 Tests
     func testGetCard() {
@@ -96,5 +105,12 @@ final class MagicianInTraining: XCTestCase {
     //Task 6 Tests
     func testInsertAtBottom(){
         XCTAssertEqual(insert(10, atBottomOf: [4, 3, 8, 9, 1, 7, 6, 5, 2]), [10, 4, 3, 8, 9, 1, 7, 6, 5, 2])
+    }
+    //Task 7 Tests
+    func testRemoveBottomCardFullStack(){
+        XCTAssertEqual(removeBottomCard([8, 7, 4, 2, 6, 5, 3, 1, 9]), [7, 4, 2, 6, 5, 3, 1, 9])
+    }
+    func testRemoveBottomCardEmptyStack(){
+        XCTAssertEqual(removeBottomCard([]), [])
     }
 }
