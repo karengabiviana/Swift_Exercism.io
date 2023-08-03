@@ -44,6 +44,14 @@ func removeTopCard(_ stack: [Int]) -> [Int] {
     var copyStack = stack
     return removeCard(at: copyStack.count - 1, from: copyStack)
 }
+
+//Task 6 - Implement the function insert(_:atBottomOf:) that returns a copy of the stack with the new card provided added to the bottom of the stack.
+func insert(_ newCard: Int, atBottomOf stack: [Int]) -> [Int] {
+    var copyStack = stack
+    copyStack.insert(newCard, at: 0)
+    return copyStack
+}
+
 final class MagicianInTraining: XCTestCase {
     //Task 1 Tests
     func testGetCard() {
@@ -84,5 +92,9 @@ final class MagicianInTraining: XCTestCase {
     }
     func testRemoveTopCardEmptyStack() {
         XCTAssertEqual( removeTopCard([]), [])
+    }
+    //Task 6 Tests
+    func testInsertAtBottom(){
+        XCTAssertEqual(insert(10, atBottomOf: [4, 3, 8, 9, 1, 7, 6, 5, 2]), [10, 4, 3, 8, 9, 1, 7, 6, 5, 2])
     }
 }
