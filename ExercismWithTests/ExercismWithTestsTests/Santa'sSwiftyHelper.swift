@@ -23,6 +23,18 @@ func cartesianToPolar(_ cart: (x: Double, y: Double)) -> (r: Double, phi: Double
     return polar
 }
 
+//Task 2 - or your second task, your boss is upgrading its database and is modifying its record structures. They want to combine the records from the toy production database and the toy recipient databases to save space and give the product leads better visibility into the demand for their toy.
+
+//For this task you will implement the function combineRecords(production:gifts:) that takes two tuples as input, production: (toy: String, id: Int, productLead: String) and gifts: (Int, [String]) and your function will return a combined tuple, (id: Int, toy: String, productLead: String, recipients: [String]). Note that the two id fields in the input tuples are guaranteed to be the same value.
+
+func combineRecords(
+  production: (toy: String, id: Int, productLead: String),
+  gifts: (Int, [String])
+) -> (id: Int, toy: String, productLead: String, recipients: [String]) {
+
+    (id: production.id, toy: production.toy, productLead: production.productLead, recipients: gifts.1)
+}
+
 final class Santa_sSwiftyHelper: XCTestCase {
     //Task 1 Tests
     func testCartesianToPolar() {
@@ -38,5 +50,32 @@ final class Santa_sSwiftyHelper: XCTestCase {
         let expected = (r: 5.3077, phi:-2.6704)
         XCTAssertEqual(output.r, expected.r, accuracy: 0.01)
         XCTAssertEqual(output.phi, expected.phi, accuracy: 0.01)
+    }
+    //Task 2 Tests
+    func testCombineRecords() {
+        let id = Int.random(in: 0..<1_000_000)
+        let toy =
+          ["Chemistry set", "Race car", "Box kite", "Building brick set", "Talking doll"]
+          .randomElement()!
+        let productLead =
+          ["Binkles", "Snowii", "Jinkies", "Pippi", "Zippit", "Xandi", "Alf"]
+          .randomElement()!
+        let children =
+          [
+            "Inara", "Maxime", "Bandile", "Shaurya", "Breno", "Anita", "Yael",
+            "Dimitrios", "Lufy", "Iminathi", "Valeria", "Marlon", "Mitsuki",
+            "Bjarni", "Venla", "Anton", "Beatriz", "Joo-won", "Zahra", "Liam", "Parker",
+          ]
+        let numberOfRecipients = Int.random(in: 0..<children.count)
+        let recipients = Array(children.shuffled().prefix(numberOfRecipients))
+        let actual =
+          combineRecords(
+            production: (toy: toy, id: id, productLead: productLead),
+            gifts: (id, recipients)
+          )
+        XCTAssertTrue(
+          actual.id == id && actual.toy == toy && actual.productLead == productLead
+            && actual.recipients == recipients
+        )
     }
 }
