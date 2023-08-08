@@ -61,6 +61,10 @@ func removeBottomCard(_ stack: [Int]) -> [Int] {
     return copyStack
 }
 
+//Task 8 - Implement the function checkSizeOfStack(_:_:) that checks whether the size of the stack is equal to a given stackSize or not.
+func checkSizeOfStack(_ stack: [Int], _ size: Int) -> Bool{
+    stack.count == size
+}
 final class MagicianInTraining: XCTestCase {
     //Task 1 Tests
     func testGetCard() {
@@ -112,5 +116,12 @@ final class MagicianInTraining: XCTestCase {
     }
     func testRemoveBottomCardEmptyStack(){
         XCTAssertEqual(removeBottomCard([]), [])
+    }
+    //Task 8 Tests
+    func testCheckSizeTrue() {
+        XCTAssertTrue(checkSizeOfStack([6, 9, 7, 8, 2, 3, 4, 5, 1], 9))
+    }
+    func testCheckSizeFalse() {
+        XCTAssertFalse(checkSizeOfStack([6, 9, 7, 8, 2, 3, 4, 5, 1], 3))
     }
 }
