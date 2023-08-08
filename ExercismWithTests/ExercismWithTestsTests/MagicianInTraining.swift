@@ -65,6 +65,17 @@ func removeBottomCard(_ stack: [Int]) -> [Int] {
 func checkSizeOfStack(_ stack: [Int], _ size: Int) -> Bool{
     stack.count == size
 }
+
+//Task 09 - Implement the function evenCardCount(_:) that steps through the stack and counts the number of even cards in it.
+func evenCardCount(_ stack: [Int]) -> Int {
+    var evenCards = 0
+    for card in stack {
+        if card.isMultiple(of: 2) {
+            evenCards += 1
+        }
+    }
+    return evenCards
+}
 final class MagicianInTraining: XCTestCase {
     //Task 1 Tests
     func testGetCard() {
@@ -123,5 +134,12 @@ final class MagicianInTraining: XCTestCase {
     }
     func testCheckSizeFalse() {
         XCTAssertFalse(checkSizeOfStack([6, 9, 7, 8, 2, 3, 4, 5, 1], 3))
+    }
+    //Task 9 Tests
+    func testEvenCardCount() {
+        XCTAssertEqual(evenCardCount([4, 6, 3, 7, 1, 9, 5, 8, 2]), 4)
+    }
+    func testEvenCardCountZero() {
+        XCTAssertEqual(evenCardCount([7, 3, 7, 1, 5, 5, 3, 9, 9]), 0)
     }
 }
