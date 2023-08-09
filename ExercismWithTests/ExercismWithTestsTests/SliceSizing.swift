@@ -16,6 +16,28 @@ func sliceSize(diameter: Double?, slices: Int?) -> Double? {
         let area = Double.pi * (radius * radius)
         return area / Double(slices)
 }
+
+//Task 2 - You web application will pass four strings to your function, biggestSlice(diameterA: String, slicesA: String, diameterB: String, slicesB: String) -> String. The first and second strings are the diameter and number of slices of the first pizza respectively, and the third and fourth are the diameter and number of slices of the second pizza respectively.
+
+//Implement biggestSlice so that it attempts to convert the diameter and number of slices for each pizza into a Double and an Int respectively if both of these values can be obtained from the strings, use your first function to try to compute the area, otherwise the area for that slice is nil. Once the areas of both slices are obtained, compare the two areas using the following rules:
+//
+//If slice A's area is a Double and slice B's is nil, return "Slice A is bigger". If the reverse is true, return "Slice B is bigger".
+//If both areas are Doubles, return "Slice A is bigger" or "Slice B is bigger" according to which slice has the greater area.
+//If both areas are nil, or if both are Doubles and they are equal, return "Neither slice is bigger".
+func biggestSlice(
+    diameterA: String, slicesA: String,
+    diameterB: String, slicesB: String
+) -> String {
+    let sizeA = (sliceSize(diameter: Double(diameterA), slices: Int(slicesA))) ?? -1
+    let sizeB = (sliceSize(diameter: Double(diameterB), slices: Int(slicesB))) ?? -1
+    if sizeA > sizeB {
+        return "Slice A is bigger"
+    } else if sizeB > sizeA {
+        return "Slice B is bigger"
+    }
+    return "Neither slice is bigger"
+}
+
 final class SliceSizing: XCTestCase {
     //Task 1 Tests
     func testSliceNormal(){
@@ -48,5 +70,34 @@ final class SliceSizing: XCTestCase {
         let slices : Int? = nil
         let output = sliceSize(diameter: diameter, slices: slices)
         XCTAssertNil(output)
+    }
+    //Task 2 Tests
+    func testBiggestA() {
+        let biggest = biggestSlice(diameterA: "16", slicesA: "8", diameterB: "12", slicesB: "6")
+        XCTAssertEqual(biggest, "Slice A is bigger")
+    }
+    func testBiggestB() {
+        let biggest = biggestSlice(diameterA: "16", slicesA: "10", diameterB: "18", slicesB: "6")
+        XCTAssertEqual(biggest, "Slice B is bigger")
+    }
+    func testBiggestATie() {
+        let biggest = biggestSlice(diameterA: "16", slicesA: "10", diameterB: "16", slicesB: "10")
+        XCTAssertEqual(biggest, "Neither slice is bigger")
+    }
+    func testBiggestANil() {
+        let biggest = biggestSlice(diameterA: "-16", slicesA: "10", diameterB: "16", slicesB: "10")
+        XCTAssertEqual(biggest, "Slice B is bigger")
+    }
+    func testBiggestBNil() {
+        let biggest = biggestSlice(diameterA: "16", slicesA: "10", diameterB: "-16", slicesB: "10")
+        XCTAssertEqual(biggest, "Slice A is bigger")
+    }
+    func testBiggestBothNil() {
+        let biggest = biggestSlice(diameterA: "16 inches", slicesA: "10", diameterB: "18 inches", slicesB: "10")
+        XCTAssertEqual(biggest, "Neither slice is bigger")
+    }
+    func testZeroIsValid() {
+        let biggest = biggestSlice(diameterA: "0", slicesA: "10", diameterB: "-16", slicesB: "10")
+        XCTAssertEqual(biggest, "Slice A is bigger")
     }
 }
