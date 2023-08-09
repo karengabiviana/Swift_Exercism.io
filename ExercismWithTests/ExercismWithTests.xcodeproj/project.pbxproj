@@ -12,6 +12,7 @@
 		D606E7802A69B46800449145 /* ExercismWithTests.h in Headers */ = {isa = PBXBuildFile; fileRef = D606E7742A69B46800449145 /* ExercismWithTests.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D606E78A2A69BCC000449145 /* LayersOfLasagna.swift in Sources */ = {isa = PBXBuildFile; fileRef = D606E7892A69BCC000449145 /* LayersOfLasagna.swift */; };
 		D6B0E17A2A8281EB0044895E /* Santa'sSwiftyHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B0E1792A8281EB0044895E /* Santa'sSwiftyHelper.swift */; };
+		D6B0E17C2A83D9950044895E /* SliceSizing.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B0E17B2A83D9950044895E /* SliceSizing.swift */; };
 		D6E360872A70758900BB8050 /* FreelancerRates.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E360862A70758900BB8050 /* FreelancerRates.swift */; };
 		D6E360892A71A57100BB8050 /* Cal'sCustomSignShop.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E360882A71A57100BB8050 /* Cal'sCustomSignShop.swift */; };
 		D6FC5EDE2A731415008C745E /* SecretAgentDoubleNull0111.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FC5EDD2A731415008C745E /* SecretAgentDoubleNull0111.swift */; };
@@ -35,6 +36,7 @@
 		D606E77E2A69B46800449145 /* HelloWorld.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelloWorld.swift; sourceTree = "<group>"; };
 		D606E7892A69BCC000449145 /* LayersOfLasagna.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayersOfLasagna.swift; sourceTree = "<group>"; };
 		D6B0E1792A8281EB0044895E /* Santa'sSwiftyHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Santa'sSwiftyHelper.swift"; sourceTree = "<group>"; };
+		D6B0E17B2A83D9950044895E /* SliceSizing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliceSizing.swift; sourceTree = "<group>"; };
 		D6E360862A70758900BB8050 /* FreelancerRates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreelancerRates.swift; sourceTree = "<group>"; };
 		D6E360882A71A57100BB8050 /* Cal'sCustomSignShop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cal'sCustomSignShop.swift"; sourceTree = "<group>"; };
 		D6FC5EDD2A731415008C745E /* SecretAgentDoubleNull0111.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretAgentDoubleNull0111.swift; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 				D6FC5EDD2A731415008C745E /* SecretAgentDoubleNull0111.swift */,
 				D6FC61D92A79B953008C745E /* VexingVehiclePurchase.swift */,
 				D6B0E1792A8281EB0044895E /* Santa'sSwiftyHelper.swift */,
+				D6B0E17B2A83D9950044895E /* SliceSizing.swift */,
 			);
 			path = ExercismWithTestsTests;
 			sourceTree = "<group>";
@@ -216,6 +219,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D6B0E17C2A83D9950044895E /* SliceSizing.swift in Sources */,
 				D6E360892A71A57100BB8050 /* Cal'sCustomSignShop.swift in Sources */,
 				D6E360872A70758900BB8050 /* FreelancerRates.swift in Sources */,
 				D6FC5EDE2A731415008C745E /* SecretAgentDoubleNull0111.swift in Sources */,
