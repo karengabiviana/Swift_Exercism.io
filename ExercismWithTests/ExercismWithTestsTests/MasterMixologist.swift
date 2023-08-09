@@ -58,6 +58,23 @@ func makeWedges(needed: Int, limes: [String]) -> Int{
        return limeWedges
 }
 
+//Task 3 - Congratulations! Your long work day is nearly done and you will soon be going home to work on your new app. But you still have a stream of drink orders to make before you can hand off the orders to the next shift and leave.
+
+//Implement the function finishShift(minutesLeft: Int, remainingOrders: [[String]]) -> [[String]] which takes in the number of minutes left in your shift (guaranteed to be greater than 0), and a non-empty array of drink orders. As long as you still have time left in your shift you are to make the first order in the Array and then remove that order from the array. You can then subtract the amount of time it took to prepare that order, according to your function timeToPrepare(drinks:) from the time left on your shift. Your function should return the array of orderes that you have not yet gotten to before the end of your shift.
+//
+//And good news! If you make all of the orders with time left on your shift you get to go home early!
+
+func finishShift(minutesLeft: Int, remainingOrders: [[String]]) -> [[String]] {
+    var orders = remainingOrders
+    var minutes = Double(minutesLeft)
+
+    while minutes > 0 && !orders.isEmpty{
+        minutes -= timeToPrepare(drinks: orders[0])
+        orders.remove(at: 0)
+    }
+    return orders
+}
+
 final class MasterMixologist: XCTestCase {
     //Task 1 tests
     func testTimeToPrepare() {
@@ -81,5 +98,15 @@ final class MasterMixologist: XCTestCase {
     }
     func testMakeWedgesTooMuchLimes() {
         XCTAssertEqual(makeWedges(needed: 80, limes: ["small", "large", "large", "medium", "small", "large", "large"]), 7)
+    }
+    //Task 3 tests
+    func testFinishShift() {
+        XCTAssertEqual(finishShift(minutesLeft: 5, remainingOrders: [["beer", "frozen drink", "shot"], ["fancy drink", "soda"], ["beer", "beer", "water"], ["mixed drink", "frozen drink"]]), [["beer", "beer", "water"], ["mixed drink", "frozen drink"]])
+    }
+    func testFinishShiftJustRunOver() {
+        XCTAssertEqual(finishShift(minutesLeft: 10, remainingOrders: [["beer", "frozen drink", "shot"], ["fancy drink", "soda"], ["beer", "beer", "water"], ["mixed drink", "frozen drink"]]), [])
+    }
+    func testFinishShiftLeaveEarly() {
+        XCTAssertEqual(finishShift(minutesLeft: 120, remainingOrders: [["beer", "frozen drink", "shot"], ["fancy drink", "soda"], ["beer", "beer", "water"], ["mixed drink", "frozen drink"]]), [])
     }
 }
