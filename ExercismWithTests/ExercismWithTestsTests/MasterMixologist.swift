@@ -33,6 +33,31 @@ func timeToPrepare(drinks: [String]) -> Double{
         return time
 }
 
+// Task 2 - One of the first things you need to do when you start your shift is to make sure your little bin of lime wedges is full for the shift ahead. Implement the function makeWedges(needed: Int, limes: [String]) -> Int, which takes the number of lime wedges you need to cut and an array representing the supply of whole limes you have on hand. You can get 6 wedges from a "small" lime, 8 wedges from a "medium" lime and 10 from a "large" lime. While you still need more wedges and you still have more limes to cut up, take the first lime out of the array, and subtract the appropriate number of wedges from the amount you need. Keep going until you don't need any more wedges or you run out of limes.
+//Return the number of limes you cut up.
+func makeWedges(needed: Int, limes: [String]) -> Int{
+    var limeWedges = 0
+       var remainingWedges = needed
+
+       for lime in limes {
+
+           if remainingWedges <= 0 {break}
+
+           switch lime {
+           case "small":
+               remainingWedges -= 6
+           case "medium":
+               remainingWedges -= 8
+           case "large":
+               remainingWedges -= 10
+           default:
+               break
+           }
+           limeWedges += 1
+       }
+       return limeWedges
+}
+
 final class MasterMixologist: XCTestCase {
     //Task 1 tests
     func testTimeToPrepare() {
@@ -44,5 +69,17 @@ final class MasterMixologist: XCTestCase {
     func testTimeToPrepareToMuchWork() {
         XCTAssertEqual(timeToPrepare(drinks: ["beer", "frozen drink", "shot", "mixed drink", "frozen drink", "soda", "fancy drink", "water","beer", "frozen drink", "shot", "mixed drink", "frozen drink", "soda", "fancy drink", "water"]), 25)
     }
-
+    //Task 2 tests
+    func testMakeWedges() {
+        XCTAssertEqual(makeWedges(needed: 42, limes: ["small", "large", "large", "medium", "small", "large", "large"]), 6)
+    }
+    func testMakeWedgesNoNeed() {
+        XCTAssertEqual(makeWedges(needed: 0, limes: ["small", "large", "large", "medium", "small", "large", "large"]), 0)
+    }
+    func testMakeWedgesNoLimes() {
+        XCTAssertEqual(makeWedges(needed: 42, limes: []), 0)
+    }
+    func testMakeWedgesTooMuchLimes() {
+        XCTAssertEqual(makeWedges(needed: 80, limes: ["small", "large", "large", "medium", "small", "large", "large"]), 7)
+    }
 }
