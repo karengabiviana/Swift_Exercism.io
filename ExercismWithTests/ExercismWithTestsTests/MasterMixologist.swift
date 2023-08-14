@@ -75,6 +75,35 @@ func finishShift(minutesLeft: Int, remainingOrders: [[String]]) -> [[String]] {
     return orders
 }
 
+//Task 4 - In order to make sure the beer and soda stay fresh, you need to track their orders along with the times those orders were placed.
+
+//Implement the function orderTracker(orders: [(drink: String, time: String)]) -> (beer: (first: String, last: String, total: Int)?, soda: (first: String, last: String, total: Int)?) which, when given a list of orders and times return a pair of optional tuples containing the times of the first and last orders of beer and soda along with the total number of orders of each and nil if no orders for those beverages were made. You do not need to track any other drinks.
+
+func orderTracker(orders: [(drink: String, time: String)]) ->
+(beer: (first: String, last: String, total: Int)?, soda: (first: String, last: String, total: Int)?) {
+    var beers = [String]()
+    var sodas = [String]()
+
+    for order in orders {
+        switch order.drink {
+        case "beer": beers.append(order.time)
+        case "soda": sodas.append(order.time)
+        default: continue
+        }
+    }
+
+    beers.sort { $0 < $1 }
+    sodas.sort { $0 < $1 }
+
+    let beerTrack: (first: String, last: String, total: Int)?
+    let sodaTrack: (first: String, last: String, total: Int)?
+
+    beerTrack = beers.isEmpty ? nil : (beers.first!, beers.last!, beers.count)
+    sodaTrack = sodas.isEmpty ? nil : (sodas.first!, sodas.last!, sodas.count)
+
+    return (beerTrack, sodaTrack)
+}
+
 final class MasterMixologist: XCTestCase {
     //Task 1 tests
     func testTimeToPrepare() {
@@ -108,5 +137,87 @@ final class MasterMixologist: XCTestCase {
     }
     func testFinishShiftLeaveEarly() {
         XCTAssertEqual(finishShift(minutesLeft: 120, remainingOrders: [["beer", "frozen drink", "shot"], ["fancy drink", "soda"], ["beer", "beer", "water"], ["mixed drink", "frozen drink"]]), [])
+    }
+    //Task 4 test
+    func testOrderTracker() {
+            let orders = [
+                (drink: "beer", time: "10:01"),
+                (drink: "frozen drink", time: "10:02"),
+                (drink: "shot", time: "10:05"),
+                (drink: "fancy drink", time: "10:06"),
+                (drink: "soda", time: "10:09"),
+                (drink: "beer", time: "10:15"),
+                (drink: "beer", time: "10:22"),
+                (drink: "water", time: "10:26"),
+                (drink: "mixed drink", time: "10:28"),
+                (drink: "frozen drink", time: "10:33")
+            ]
+            let expectedOutput = (beer: (first: "10:01", last: "10:22", total: 3), soda: (first: "10:09", last: "10:09", total: 1))
+
+            let output = orderTracker(orders: orders)
+
+            XCTAssertEqual(output.beer?.first, expectedOutput.beer.first)
+            XCTAssertEqual(output.beer?.last, expectedOutput.beer.last)
+            XCTAssertEqual(output.beer?.total, expectedOutput.beer.total)
+            XCTAssertEqual(output.soda?.first, expectedOutput.soda.first)
+            XCTAssertEqual(output.soda?.last, expectedOutput.soda.last)
+            XCTAssertEqual(output.soda?.total, expectedOutput.soda.total)
+    }
+    func testOrderTrackerOneEach() {
+            let orders = [
+                (drink: "beer", time: "10:01"),
+                (drink: "soda", time: "10:02"),
+                (drink: "shot", time: "10:05"),
+                (drink: "fancy drink", time: "10:06"),
+                (drink: "water", time: "10:26")
+            ]
+            let expectedOutput = (beer: (first: "10:01", last: "10:01", total: 1), soda: (first: "10:02", last: "10:02", total: 1))
+
+            let output = orderTracker(orders: orders)
+
+            XCTAssertEqual(output.beer?.first, expectedOutput.beer.first)
+            XCTAssertEqual(output.beer?.last, expectedOutput.beer.last)
+            XCTAssertEqual(output.beer?.total, expectedOutput.beer.total)
+            XCTAssertEqual(output.soda?.first, expectedOutput.soda.first)
+            XCTAssertEqual(output.soda?.last, expectedOutput.soda.last)
+            XCTAssertEqual(output.soda?.total, expectedOutput.soda.total)
+    }
+    func testOrderTrackerNoBeer() {
+        let orders = [
+            (drink: "soda", time: "10:02"),
+            (drink: "shot", time: "10:05"),
+            (drink: "fancy drink", time: "10:06"),
+            (drink: "soda", time: "10:09"),
+            (drink: "water", time: "10:26"),
+            (drink: "soda", time: "10:33")
+        ]
+        let expectedOutput: ((beer: (first: String, last: String, total: Int)?, soda: (first: String, last: String, total: Int)?)) = (beer: nil, soda: (first: "10:02", last: "10:33", total: 3))
+
+        let output = orderTracker(orders: orders)
+
+        XCTAssertNil(output.beer?.first)
+        XCTAssertNil(output.beer?.last)
+        XCTAssertNil(output.beer?.total)
+        XCTAssertEqual(output.soda?.first, expectedOutput.soda?.first)
+        XCTAssertEqual(output.soda?.last, expectedOutput.soda?.last)
+        XCTAssertEqual(output.soda?.total, expectedOutput.soda?.total)
+    }
+    func testOrderTrackerNoSoda() {
+        let orders = [
+            (drink: "beer", time: "10:01"), (drink: "shot", time: "10:05"),
+            (drink: "fancy drink", time: "10:06"), (drink: "beer", time: "10:15"),
+            (drink: "beer", time: "10:22"), (drink: "water", time: "10:26"),
+            (drink: "beer", time: "10:28"),
+        ]
+        let expectedOutput: ((beer: (first: String, last: String, total: Int)?, soda: (first: String, last: String, total: Int)?)) = (beer: (first: "10:01", last: "10:28", total: 4), soda: nil)
+
+        let output = orderTracker(orders: orders)
+
+        XCTAssertNil(output.soda?.first)
+        XCTAssertNil(output.soda?.last)
+        XCTAssertNil(output.soda?.total)
+        XCTAssertEqual(output.beer?.first, expectedOutput.beer?.first)
+        XCTAssertEqual(output.beer?.last, expectedOutput.beer?.last)
+        XCTAssertEqual(output.beer?.total, expectedOutput.beer?.total)
     }
 }
