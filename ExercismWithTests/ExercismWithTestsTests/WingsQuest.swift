@@ -43,6 +43,20 @@ func lose(powerUpActive: Bool, touchingEagle: Bool) -> Bool {
     }
 }
 
+//Task 4 - Define the win(hasPickedUpAllSeeds:powerUpActive:touchingEagle:) function that takes the arguments:
+
+// - hasPickedUpAllSeeds if the bird has picked up all of the seeds.
+// - powerUpActive if the bird has a power-up active.
+// - touchingEagle if the bird is an eagle.
+//The function should return true if the bird has gathered all of the seeds and has not lost based on the arguments defined in part 3, and return false otherwise.
+func win(hasPickedUpAllSeeds: Bool, powerUpActive: Bool, touchingEagle: Bool) -> Bool {
+    if hasPickedUpAllSeeds && !lose(powerUpActive: powerUpActive, touchingEagle: touchingEagle)  {
+        return true
+    } else {
+        return false
+    }
+}
+
 final class WingsQuest: XCTestCase {
     //Task 1 tests
     func testBonusPointsTrue() {
@@ -83,4 +97,21 @@ final class WingsQuest: XCTestCase {
     func testLoseBothFalse() {
         XCTAssertFalse(lose(powerUpActive: false, touchingEagle: false))
     }
+    //Task 4 tests
+    func testWinPowerUp() {
+        XCTAssertTrue(win(hasPickedUpAllSeeds: true, powerUpActive: true, touchingEagle: false))
+    }
+    func testWinPowerUpAndTouchEagle() {
+        XCTAssertTrue(win(hasPickedUpAllSeeds: true, powerUpActive: true, touchingEagle: true))
+    }
+    func testWinWithoutPowerUpAndTouchEagle() {
+        XCTAssertTrue(win(hasPickedUpAllSeeds: true, powerUpActive: false, touchingEagle: false))
+    }
+    func testWinNotPickedUpAllSeeds() {
+        XCTAssertFalse(win(hasPickedUpAllSeeds: false, powerUpActive: true, touchingEagle: false))
+    }
+    func testWinButLost() {
+        XCTAssertFalse(win(hasPickedUpAllSeeds: true, powerUpActive: false, touchingEagle: true))
+    }
+
 }
