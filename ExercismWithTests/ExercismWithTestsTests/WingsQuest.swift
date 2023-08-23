@@ -34,6 +34,15 @@ func score(touchingPowerUp: Bool, touchingSeed: Bool) -> Bool {
 
 }
 
+//Task 03 - Define the function lose(powerUpActive:touchingEagle:) that takes two arguments powerUpActive, which holds if the bird has an active power-up, and the argument touchingEagle which holds if the bird is touching an eagle. The function should return true if the character is an eagle and does not have a power-up active, and return false otherwise.
+func lose(powerUpActive: Bool, touchingEagle: Bool) -> Bool {
+    if !powerUpActive && touchingEagle {
+        return true
+    } else {
+        return false
+    }
+}
+
 final class WingsQuest: XCTestCase {
     //Task 1 tests
     func testBonusPointsTrue() {
@@ -60,5 +69,18 @@ final class WingsQuest: XCTestCase {
     }
     func testScoreBothFalse() {
         XCTAssertFalse(score(touchingPowerUp: false, touchingSeed: false))
+    }
+    //Task 3 tests
+    func testLoseEagleTrue() {
+        XCTAssertTrue(lose(powerUpActive: false, touchingEagle: true))
+    }
+    func testLosePowerUpTrue() {
+        XCTAssertFalse(lose(powerUpActive: true, touchingEagle: false))
+    }
+    func testLoseBothTrue() {
+        XCTAssertFalse(lose(powerUpActive: true, touchingEagle: true))
+    }
+    func testLoseBothFalse() {
+        XCTAssertFalse(lose(powerUpActive: false, touchingEagle: false))
     }
 }
