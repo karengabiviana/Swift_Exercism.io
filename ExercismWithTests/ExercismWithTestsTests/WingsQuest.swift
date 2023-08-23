@@ -22,7 +22,20 @@ func bonusPoints(powerUpActive: Bool, touchingEagle: Bool) -> Bool {
     }
 }
 
+//Task 02 - In the game, the player gets points when picking up a seed or a power-up.
+
+//Define the function score(touchingPowerUp:touchingSeed:) that takes two arguments touchingPowerUp, which holds if the bird is touching a power-up, the argument touchingSeed which holds if the bird is touching a seed. The function should return true if the bird is touching a power-up or a seed, and return false otherwise.
+func score(touchingPowerUp: Bool, touchingSeed: Bool) -> Bool {
+    if touchingSeed || touchingPowerUp {
+        return true
+    } else {
+        return false
+    }
+
+}
+
 final class WingsQuest: XCTestCase {
+    //Task 1 tests
     func testBonusPointsTrue() {
         XCTAssertTrue(bonusPoints(powerUpActive: true, touchingEagle: true))
     }
@@ -34,5 +47,18 @@ final class WingsQuest: XCTestCase {
     }
     func testBonusPointsFalseBothFalse() {
         XCTAssertFalse(bonusPoints(powerUpActive: false, touchingEagle: false))
+    }
+    //Task 2 tests
+    func testScorePowerUPTrue() {
+        XCTAssertTrue(score(touchingPowerUp: true, touchingSeed: false))
+    }
+    func testScoreSeedTrue() {
+        XCTAssertTrue(score(touchingPowerUp: false, touchingSeed: true))
+    }
+    func testScoreBothTrue() {
+        XCTAssertTrue(score(touchingPowerUp: true, touchingSeed: true))
+    }
+    func testScoreBothFalse() {
+        XCTAssertFalse(score(touchingPowerUp: false, touchingSeed: false))
     }
 }
