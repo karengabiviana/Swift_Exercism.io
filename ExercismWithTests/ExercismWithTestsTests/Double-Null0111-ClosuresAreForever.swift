@@ -20,12 +20,24 @@ let flip: (String, String, String) -> (String, String, String) =
 {(s1:String, s2:String, s3:String) -> (String, String, String) in
         return (s2, s1, s3)
     }
+//Task 2 - Write a closure that takes a (String, String, String) tuple and returns the tuple with the order of the wires rotated to the left. Assign this closure to the name rotate.
+let rotate: (String, String, String) -> (String, String, String) =
+{(s1:String, s2:String, s3:String) -> (String, String, String) in
+    return (s2, s3, s1)
+}
 
 final class DoubleNull0111ClosuresAreForeverTests: XCTestCase {
     //Task 1 tests
     func testFlip() {
         let output = flip("red", "yellow", "blue")
         let outputExpected = ("yellow", "red", "blue")
+
+        XCTAssertTrue(output == outputExpected)
+    }
+    //Task 2 tests
+    func testRotate() {
+        let output = rotate("red", "yellow", "blue")
+        let outputExpected = ("yellow", "blue", "red")
 
         XCTAssertTrue(output == outputExpected)
     }
