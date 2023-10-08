@@ -19,6 +19,7 @@
 		D6B0E17E2A841B6A0044895E /* MasterMixologist.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B0E17D2A841B6A0044895E /* MasterMixologist.swift */; };
 		D6E360872A70758900BB8050 /* FreelancerRates.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E360862A70758900BB8050 /* FreelancerRates.swift */; };
 		D6E360892A71A57100BB8050 /* Cal'sCustomSignShop.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E360882A71A57100BB8050 /* Cal'sCustomSignShop.swift */; };
+		D6F26A402AD364360022EE72 /* HighScoreBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F26A3F2AD364360022EE72 /* HighScoreBoard.swift */; };
 		D6FC5EDE2A731415008C745E /* SecretAgentDoubleNull0111.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FC5EDD2A731415008C745E /* SecretAgentDoubleNull0111.swift */; };
 		D6FC61DA2A79B953008C745E /* VexingVehiclePurchase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FC61D92A79B953008C745E /* VexingVehiclePurchase.swift */; };
 /* End PBXBuildFile section */
@@ -47,6 +48,7 @@
 		D6B0E17D2A841B6A0044895E /* MasterMixologist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterMixologist.swift; sourceTree = "<group>"; };
 		D6E360862A70758900BB8050 /* FreelancerRates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreelancerRates.swift; sourceTree = "<group>"; };
 		D6E360882A71A57100BB8050 /* Cal'sCustomSignShop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cal'sCustomSignShop.swift"; sourceTree = "<group>"; };
+		D6F26A3F2AD364360022EE72 /* HighScoreBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighScoreBoard.swift; sourceTree = "<group>"; };
 		D6FC5EDD2A731415008C745E /* SecretAgentDoubleNull0111.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretAgentDoubleNull0111.swift; sourceTree = "<group>"; };
 		D6FC61D92A79B953008C745E /* VexingVehiclePurchase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VexingVehiclePurchase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -111,6 +113,7 @@
 				D61AC9DC2A968484003EDF1C /* WingsQuest.swift */,
 				D61AC9DE2A98F91C003EDF1C /* Double-Null0111-ClosuresAreForever.swift */,
 				D64CD1992ACCBA9D00A4FD8A /* DifferenceOfSquares.swift */,
+				D6F26A3F2AD364360022EE72 /* HighScoreBoard.swift */,
 			);
 			path = ExercismWithTestsTests;
 			sourceTree = "<group>";
@@ -238,6 +241,7 @@
 				D61AC9DF2A98F91C003EDF1C /* Double-Null0111-ClosuresAreForever.swift in Sources */,
 				D6FC5EDE2A731415008C745E /* SecretAgentDoubleNull0111.swift in Sources */,
 				D6B0E17A2A8281EB0044895E /* Santa'sSwiftyHelper.swift in Sources */,
+				D6F26A402AD364360022EE72 /* HighScoreBoard.swift in Sources */,
 				D606E78A2A69BCC000449145 /* LayersOfLasagna.swift in Sources */,
 				D6FC61DA2A79B953008C745E /* VexingVehiclePurchase.swift in Sources */,
 				D606E77F2A69B46800449145 /* HelloWorld.swift in Sources */,
