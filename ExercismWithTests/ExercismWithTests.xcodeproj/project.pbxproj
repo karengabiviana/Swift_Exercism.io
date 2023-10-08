@@ -13,6 +13,7 @@
 		D606E78A2A69BCC000449145 /* LayersOfLasagna.swift in Sources */ = {isa = PBXBuildFile; fileRef = D606E7892A69BCC000449145 /* LayersOfLasagna.swift */; };
 		D61AC9DD2A968484003EDF1C /* WingsQuest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61AC9DC2A968484003EDF1C /* WingsQuest.swift */; };
 		D61AC9DF2A98F91C003EDF1C /* Double-Null0111-ClosuresAreForever.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61AC9DE2A98F91C003EDF1C /* Double-Null0111-ClosuresAreForever.swift */; };
+		D64CD19A2ACCBA9D00A4FD8A /* DifferenceOfSquares.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64CD1992ACCBA9D00A4FD8A /* DifferenceOfSquares.swift */; };
 		D6B0E17A2A8281EB0044895E /* Santa'sSwiftyHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B0E1792A8281EB0044895E /* Santa'sSwiftyHelper.swift */; };
 		D6B0E17C2A83D9950044895E /* SliceSizing.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B0E17B2A83D9950044895E /* SliceSizing.swift */; };
 		D6B0E17E2A841B6A0044895E /* MasterMixologist.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B0E17D2A841B6A0044895E /* MasterMixologist.swift */; };
@@ -40,6 +41,7 @@
 		D606E7892A69BCC000449145 /* LayersOfLasagna.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayersOfLasagna.swift; sourceTree = "<group>"; };
 		D61AC9DC2A968484003EDF1C /* WingsQuest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WingsQuest.swift; sourceTree = "<group>"; };
 		D61AC9DE2A98F91C003EDF1C /* Double-Null0111-ClosuresAreForever.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double-Null0111-ClosuresAreForever.swift"; sourceTree = "<group>"; };
+		D64CD1992ACCBA9D00A4FD8A /* DifferenceOfSquares.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifferenceOfSquares.swift; sourceTree = "<group>"; };
 		D6B0E1792A8281EB0044895E /* Santa'sSwiftyHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Santa'sSwiftyHelper.swift"; sourceTree = "<group>"; };
 		D6B0E17B2A83D9950044895E /* SliceSizing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliceSizing.swift; sourceTree = "<group>"; };
 		D6B0E17D2A841B6A0044895E /* MasterMixologist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterMixologist.swift; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 				D6B0E17D2A841B6A0044895E /* MasterMixologist.swift */,
 				D61AC9DC2A968484003EDF1C /* WingsQuest.swift */,
 				D61AC9DE2A98F91C003EDF1C /* Double-Null0111-ClosuresAreForever.swift */,
+				D64CD1992ACCBA9D00A4FD8A /* DifferenceOfSquares.swift */,
 			);
 			path = ExercismWithTestsTests;
 			sourceTree = "<group>";
@@ -228,6 +231,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D64CD19A2ACCBA9D00A4FD8A /* DifferenceOfSquares.swift in Sources */,
 				D6B0E17C2A83D9950044895E /* SliceSizing.swift in Sources */,
 				D6E360892A71A57100BB8050 /* Cal'sCustomSignShop.swift in Sources */,
 				D6E360872A70758900BB8050 /* FreelancerRates.swift in Sources */,
