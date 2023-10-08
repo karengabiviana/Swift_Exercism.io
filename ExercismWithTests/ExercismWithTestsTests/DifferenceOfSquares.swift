@@ -17,17 +17,17 @@ import XCTest
 //
 //You are not expected to discover an efficient solution to this yourself from first principles; research is allowed, indeed, encouraged. Finding the best algorithm for the problem is a key skill in software engineering.
 func DifferenceOfSquares(naturalNumbers: [Int]) -> Int {
-    let squareOfSum = 0
-    let sumOfSquare = 0
+    var squareOfSum = 0
+    var sumOfSquare = 0
 
-    //square loop
-        //using array positions
-        //sum the number into let squareOfSum
-        //square of the let
-    //sum loop
-        //using array positions
-        //square of the number into let squareOfSum
-        //sum  into let squareOfSum
+    for numbers in naturalNumbers {
+        squareOfSum += numbers
+    }
+    squareOfSum *= squareOfSum
+
+    for numbers in naturalNumbers {
+        sumOfSquare += numbers * numbers
+    }
 
     return squareOfSum - sumOfSquare
 }
