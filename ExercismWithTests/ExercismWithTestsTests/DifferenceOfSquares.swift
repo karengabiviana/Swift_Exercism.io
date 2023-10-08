@@ -21,12 +21,20 @@ func DifferenceOfSquares(naturalNumbers: [Int]) -> Int {
     var sumOfSquare = 0
 
     for numbers in naturalNumbers {
-        squareOfSum += numbers
+        var naturalVerificatedNumber = numbers
+        if naturalVerificatedNumber < 0 {
+            naturalVerificatedNumber = 0
+        }
+        squareOfSum += naturalVerificatedNumber
     }
     squareOfSum *= squareOfSum
 
     for numbers in naturalNumbers {
-        sumOfSquare += numbers * numbers
+        var naturaVerificatedNumber = numbers
+        if naturaVerificatedNumber < 0 {
+            naturaVerificatedNumber = 0
+        }
+        sumOfSquare += naturaVerificatedNumber * naturaVerificatedNumber
     }
 
     return squareOfSum - sumOfSquare
@@ -36,6 +44,36 @@ final class DifferenceOfSquaresTests: XCTestCase {
     func test1To10() {
         let input = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
         let outputExpected = 2640
+        XCTAssertEqual(DifferenceOfSquares(naturalNumbers: input), outputExpected)
+    }
+
+    func testOneNumber() {
+        let input = [3]
+        let outputExpected = 0
+        XCTAssertEqual(DifferenceOfSquares(naturalNumbers: input), outputExpected)
+    }
+
+    func testALotOfNumbers() {
+        let input = Array(1...50)
+        let outputExpected = 1_582_700
+        XCTAssertEqual(DifferenceOfSquares(naturalNumbers: input), outputExpected)
+    }
+
+    func testWithZero() {
+        let input = [0]
+        let outputExpected = 0
+        XCTAssertEqual(DifferenceOfSquares(naturalNumbers: input), outputExpected)
+    }
+
+    func testWithNegative() {
+        let input = [-1,1,2]
+        let outputExpected = 4
+        XCTAssertEqual(DifferenceOfSquares(naturalNumbers: input), outputExpected)
+    }
+
+    func testNoSequence() {
+        let input = [3,9,2]
+        let outputExpected = 102
         XCTAssertEqual(DifferenceOfSquares(naturalNumbers: input), outputExpected)
     }
 }
