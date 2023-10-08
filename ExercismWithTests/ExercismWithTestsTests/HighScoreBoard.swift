@@ -16,12 +16,38 @@ class HighScoreBoard {
     func newScoreBoard() -> [String: Int] {
       return [:]
     }
+    //Task 2 - To add a player to the high score dictionary, define addPlayer, which is a function which takes 3 parameters:
+
+    //The first parameter is the dictionary of scores. This should be an in-out parameter.
+    //The second parameter is the name of a player as a string.
+    //The third parameter is the score as an integer. The parameter is optional, implement the third parameter with a default value of 0.
+    func addPlayer(_ scores: inout [String: Int], _ name: String, _ score: Int = 0) {
+        scores[name] = score
+    }
 }
 
 class HighScoreBoardTests: XCTestCase {
     let highScoreBoard = HighScoreBoard()
+
     //Task 1 Tests
     func testNewScore() {
         XCTAssertEqual(highScoreBoard.newScoreBoard(), [:])
+    }
+
+    //Task 2 Tests
+    var scoreBoard: [String : Int] = [:]
+
+    func testAddPlayerZero() {
+        highScoreBoard.addPlayer(&scoreBoard, "Karen")
+        let output = scoreBoard
+        let outputExpected = ["Karen": 0]
+        XCTAssertTrue( output == outputExpected )
+    }
+
+    func testAddPlayerScore() {
+        highScoreBoard.addPlayer(&scoreBoard, "Breno", 100)
+        let output = scoreBoard
+        let outputExpected = ["Breno": 100]
+        XCTAssertTrue( output == outputExpected )
     }
 }
