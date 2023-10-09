@@ -32,6 +32,17 @@ class HighScoreBoard {
     func removePlayer(_ scores: inout [String: Int], _ name: String) {
         scores.removeValue(forKey: name)
     }
+
+    //Task 4 - To reset a player's score, define resetPlayer, which takes 2 parameters:
+
+    //The first parameter is the dictionary of scores. This should be an in-out parameter.
+    //The function will set the score of the player to 0. If the player is not in the dictionary, then nothing should happen.
+    func resetScore(_ scores: inout [String: Int], _ name: String) {
+        if scores.keys.contains(name) {
+            scores[name] = 0
+        }
+    }
+
 }
 
 class HighScoreBoardTests: XCTestCase {
@@ -74,6 +85,22 @@ class HighScoreBoardTests: XCTestCase {
         highScoreBoardClass.removePlayer(&scoreBoard, "Teo")
         let output = scoreBoard
         let outputExpected = ["Giovani": 80]
+        XCTAssertTrue( output == outputExpected )
+    }
+
+    //Task 4 Tests
+    func testResetPlayerScore() {
+        highScoreBoardClass.addPlayer(&scoreBoard, "Lucas", 70)
+        highScoreBoardClass.resetScore(&scoreBoard, "Lucas")
+        let output = scoreBoard
+        let outputExpected = ["Lucas": 0]
+        XCTAssertTrue( output == outputExpected )
+    }
+    func testResetPlayerScoreIsNotInBoard() {
+        highScoreBoardClass.addPlayer(&scoreBoard, "Breno", 100)
+        highScoreBoardClass.resetScore(&scoreBoard, "Lucas")
+        let output = scoreBoard
+        let outputExpected = ["Breno": 100]
         XCTAssertTrue( output == outputExpected )
     }
 }
