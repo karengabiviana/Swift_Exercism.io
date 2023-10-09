@@ -43,6 +43,16 @@ class HighScoreBoard {
         }
     }
 
+    //Task 5 - To update a players score by adding to the previous score, define updateScore, which takes 3 parameters:
+
+    //The first parameter is the dictionary of scores. This should be an in-out parameter.
+    //The second parameter is the name of the player as a string, whose score you wish to update.
+    //The third parameter is the score that you wish to add to the stored high score.
+    func updateScore(_ scores: inout [String: Int], _ name: String, _ delta: Int) {
+        if let oldScore = scores[name] {
+            scores[name] = oldScore + delta
+        }
+    }
 }
 
 class HighScoreBoardTests: XCTestCase {
@@ -101,6 +111,26 @@ class HighScoreBoardTests: XCTestCase {
         highScoreBoardClass.resetScore(&scoreBoard, "Lucas")
         let output = scoreBoard
         let outputExpected = ["Breno": 100]
+        XCTAssertTrue( output == outputExpected )
+    }
+
+    //Task 5 Tests
+    func testUpdateScore() {
+        highScoreBoardClass.addPlayer(&scoreBoard, "Diego", 27)
+        highScoreBoardClass.addPlayer(&scoreBoard, "Bituca", 48)
+        highScoreBoardClass.addPlayer(&scoreBoard, "Tokyo", 84)
+        highScoreBoardClass.addPlayer(&scoreBoard, "Mushu", 13)
+        highScoreBoardClass.updateScore(&scoreBoard, "Bituca", 37)
+        let output = scoreBoard
+        let outputExpected = [ "Diego": 27, "Bituca": 85, "Tokyo": 84,"Mushu": 13 ]
+        print(output)
+        XCTAssertTrue( output == outputExpected )
+    }
+    func testUpdateScoreNameDoesNotExist() {
+        highScoreBoardClass.addPlayer(&scoreBoard, "Bituca", 48)
+        highScoreBoardClass.updateScore(&scoreBoard, "Diego", 37)
+        let output = scoreBoard
+        let outputExpected = ["Bituca": 48]
         XCTAssertTrue( output == outputExpected )
     }
 }
