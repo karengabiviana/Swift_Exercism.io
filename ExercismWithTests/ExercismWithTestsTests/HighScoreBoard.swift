@@ -53,6 +53,14 @@ class HighScoreBoard {
             scores[name] = oldScore + delta
         }
     }
+
+    //Task 6 - Define the function orderByPlayers, which takes 1 parameter:
+
+    //The first parameter is the dictionary of scores.
+    //The function will return an array of (String, Int) tuples that are the players and their high scores sorted in ascending order by the player's name.
+    func orderByPlayers(_ scores: [String: Int]) -> [(String, Int)] {
+        scores.sorted(by: { $0.key < $1.key})
+    }
 }
 
 class HighScoreBoardTests: XCTestCase {
@@ -133,4 +141,42 @@ class HighScoreBoardTests: XCTestCase {
         let outputExpected = ["Bituca": 48]
         XCTAssertTrue( output == outputExpected )
     }
-}
+
+    //Task 6 Tests
+    func testOrderByPlayerName() {
+        highScoreBoardClass.addPlayer(&scoreBoard, "Leo", 72)
+        highScoreBoardClass.addPlayer(&scoreBoard, "Breno", 93)
+        highScoreBoardClass.addPlayer(&scoreBoard, "Tokyo", 84)
+        highScoreBoardClass.addPlayer(&scoreBoard, "Mushu", 13)
+        highScoreBoardClass.addPlayer(&scoreBoard, "Diego", 27)
+        highScoreBoardClass.addPlayer(&scoreBoard, "Bituca", 48)
+        let output = highScoreBoardClass.orderByPlayers(scoreBoard)
+        let outputExpected = [("Bituca", 48),
+                              ("Breno", 93),
+                              ("Diego", 27),
+                              ("Leo", 72),
+                              ("Mushu", 13),
+                              ("Tokyo", 84)]
+        for (outputElement, expectedElement) in zip(output, outputExpected) {
+            XCTAssertTrue(outputElement == expectedElement)
+        }
+    }
+        func testOrderByPlayerNumbers() {
+            highScoreBoardClass.addPlayer(&scoreBoard, "8", 72)
+            highScoreBoardClass.addPlayer(&scoreBoard, "2", 93)
+            highScoreBoardClass.addPlayer(&scoreBoard, "3", 84)
+            highScoreBoardClass.addPlayer(&scoreBoard, "7", 13)
+            highScoreBoardClass.addPlayer(&scoreBoard, "1", 27)
+            highScoreBoardClass.addPlayer(&scoreBoard, "5", 48)
+            let output = highScoreBoardClass.orderByPlayers(scoreBoard)
+            let outputExpected = [("1", 27),
+                                  ("2", 93),
+                                  ("3", 84),
+                                  ("5", 48),
+                                  ("7", 13),
+                                  ("8", 72)]
+            for (outputElement, expectedElement) in zip(output, outputExpected) {
+                XCTAssertTrue(outputElement == expectedElement)
+            }
+        }
+    }
