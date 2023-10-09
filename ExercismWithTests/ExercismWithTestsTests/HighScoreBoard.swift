@@ -61,6 +61,14 @@ class HighScoreBoard {
     func orderByPlayers(_ scores: [String: Int]) -> [(String, Int)] {
         scores.sorted(by: { $0.key < $1.key})
     }
+
+    //Task 7 - To get a list of players ordered by scores in decreasing order, define orderByScores, which takes 1 parameter:
+
+    //The first parameter is the dictionary of scores.
+    //The function will return an array of (String, Int) tuples that are the players and their high scores sorted in descending order by the player's score.
+    func orderByScores(_ scores: [String: Int]) -> [(String, Int)] {
+        scores.sorted(by: { $0.value > $1.value})
+    }
 }
 
 class HighScoreBoardTests: XCTestCase {
@@ -179,4 +187,23 @@ class HighScoreBoardTests: XCTestCase {
                 XCTAssertTrue(outputElement == expectedElement)
             }
         }
+    //Task 7 tests
+    func testOrderByScore() {
+        highScoreBoardClass.addPlayer(&scoreBoard, "Leo", 72)
+        highScoreBoardClass.addPlayer(&scoreBoard, "Breno", 93)
+        highScoreBoardClass.addPlayer(&scoreBoard, "Tokyo", 84)
+        highScoreBoardClass.addPlayer(&scoreBoard, "Mushu", 13)
+        highScoreBoardClass.addPlayer(&scoreBoard, "Diego", 27)
+        highScoreBoardClass.addPlayer(&scoreBoard, "Bituca", 48)
+        let output = highScoreBoardClass.orderByScores(scoreBoard)
+        let outputExpected = [("Breno", 93),
+                              ("Tokyo", 84),
+                              ("Leo", 72),
+                              ("Bituca", 48),
+                              ("Diego", 27),
+                              ("Mushu", 13)]
+        for (outputElement, expectedElement) in zip(output, outputExpected) {
+            XCTAssertTrue(outputElement == expectedElement)
+        }
     }
+}
