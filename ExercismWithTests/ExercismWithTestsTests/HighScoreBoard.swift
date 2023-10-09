@@ -24,30 +24,56 @@ class HighScoreBoard {
     func addPlayer(_ scores: inout [String: Int], _ name: String, _ score: Int = 0) {
         scores[name] = score
     }
+    //Task 3 - To remove a player from the high score dictionary, define removePlayer, which takes 2 parameters:
+
+    //The first parameter is the dictionary of scores. This should be an in-out parameter.
+    //The second parameter is the name of the player as a string.
+    //This function should remove the player from the dictionary if they are in it and do nothing otherwise.
+    func removePlayer(_ scores: inout [String: Int], _ name: String) {
+        scores.removeValue(forKey: name)
+    }
 }
 
 class HighScoreBoardTests: XCTestCase {
-    let highScoreBoard = HighScoreBoard()
+    let highScoreBoardClass = HighScoreBoard()
 
     //Task 1 Tests
     func testNewScore() {
-        XCTAssertEqual(highScoreBoard.newScoreBoard(), [:])
+        XCTAssertEqual(highScoreBoardClass.newScoreBoard(), [:])
     }
 
     //Task 2 Tests
     var scoreBoard: [String : Int] = [:]
 
     func testAddPlayerZero() {
-        highScoreBoard.addPlayer(&scoreBoard, "Karen")
+        highScoreBoardClass.addPlayer(&scoreBoard, "Karen")
         let output = scoreBoard
         let outputExpected = ["Karen": 0]
         XCTAssertTrue( output == outputExpected )
     }
 
     func testAddPlayerScore() {
-        highScoreBoard.addPlayer(&scoreBoard, "Breno", 100)
+        highScoreBoardClass.addPlayer(&scoreBoard, "Breno", 100)
         let output = scoreBoard
         let outputExpected = ["Breno": 100]
+        XCTAssertTrue( output == outputExpected )
+    }
+
+    //Task 3 Tests
+    func testRemovePlayerWhoIsInBoard() {
+        highScoreBoardClass.addPlayer(&scoreBoard, "Breno", 100)
+        highScoreBoardClass.addPlayer(&scoreBoard, "Suz", 85)
+        highScoreBoardClass.removePlayer(&scoreBoard, "Suz")
+        let output = scoreBoard
+        let outputExpected = ["Breno": 100]
+        XCTAssertTrue( output == outputExpected )
+    }
+
+    func testRemovePlayerWhoIsNotInBoard() {
+        highScoreBoardClass.addPlayer(&scoreBoard, "Giovani", 80)
+        highScoreBoardClass.removePlayer(&scoreBoard, "Teo")
+        let output = scoreBoard
+        let outputExpected = ["Giovani": 80]
         XCTAssertTrue( output == outputExpected )
     }
 }
