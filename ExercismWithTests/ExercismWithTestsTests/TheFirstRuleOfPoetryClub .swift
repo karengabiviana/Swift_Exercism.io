@@ -75,7 +75,7 @@ class TheFirstRuleOfPoetryClub {
     func firstLetter(_ line: String) -> Character {
         line.first ?? "_"
     }
-//    Task 6 -Implement the function capitalize(_:) that correctly capitalizes a word:
+//    Task 6 - Implement the function capitalize(_:) that correctly capitalizes a word:
 //    capitalize("SHIRE")
 //     => "Shire"
 //
@@ -83,6 +83,13 @@ class TheFirstRuleOfPoetryClub {
 //     => "Horse"
     func capitalize(_ phrase: String) -> String {
         phrase.capitalized
+    }
+//   Task 7 - Implement the function trimSentence(_:) that removes whitespace from the start and end of a sentence and returns the trimmed sentence:
+//    trimSentence("Stands so high   ")
+//    => "Stands so high"
+    func trimSentence(_ line: String) -> String {
+        line.trimmingCharacters(in: .whitespaces)
+
     }
 }
 
@@ -133,4 +140,17 @@ class TheFirstRuleOfPoetryClubTests: XCTestCase {
         XCTAssertEqual(output, outputExpected)
     }
 
+    //Task 7 Tests
+    func testTrimSentenceWithWhiteSpace() {
+        let input = "Stands so high   "
+        let output = theFirstRuleOfPoetryClubTestsClass.trimSentence(input)
+        let outputExpected = "Stands so high"
+        XCTAssertEqual(output, outputExpected)
+    }
+    func testTrimSentenceWithoutWhiteSpace() {
+        let input = "Stands so high"
+        let output = theFirstRuleOfPoetryClubTestsClass.trimSentence(input)
+        let outputExpected = "Stands so high"
+        XCTAssertEqual(output, outputExpected)
+    }
 }
