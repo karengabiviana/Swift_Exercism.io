@@ -71,9 +71,18 @@ class TheFirstRuleOfPoetryClub {
     func splitOnNewlines(_ poem: String) -> [String] {
         poem.components(separatedBy: "\n")
     }
-//
+//    Task 5 - Implement the function firstLetter(_:) that returns first letter of a sentence. If there is no first letter, return an underscore (_):
     func firstLetter(_ line: String) -> Character {
-        line.first ?? " "
+        line.first ?? "_"
+    }
+//    Task 6 -Implement the function capitalize(_:) that correctly capitalizes a word:
+//    capitalize("SHIRE")
+//     => "Shire"
+//
+//    capitalize("horse")
+//     => "Horse"
+    func capitalize(_ phrase: String) -> String {
+        phrase.capitalized
     }
 }
 
@@ -100,7 +109,27 @@ class TheFirstRuleOfPoetryClubTests: XCTestCase {
         let input = "Stands so high"
         let output = theFirstRuleOfPoetryClubTestsClass.firstLetter(input)
         let outputExpected = Character("S")
-        print(output)
+        XCTAssertEqual(output, outputExpected)
+    }
+
+    func testFirstLetterEmpty() {
+        let input = ""
+        let output = theFirstRuleOfPoetryClubTestsClass.firstLetter(input)
+        let outputExpected = Character("_")
+        XCTAssertEqual(output, outputExpected)
+    }
+    // Task 6 Tests
+    func testCapitalize(){
+        let input = "karen"
+        let output = theFirstRuleOfPoetryClubTestsClass.capitalize(input)
+        let outputExpected = "Karen"
+        XCTAssertEqual(output, outputExpected)
+    }
+
+    func testCapitalizeFirstLetterEmpty(){
+        let input = " "
+        let output = theFirstRuleOfPoetryClubTestsClass.capitalize(input)
+        let outputExpected = " "
         XCTAssertEqual(output, outputExpected)
     }
 
