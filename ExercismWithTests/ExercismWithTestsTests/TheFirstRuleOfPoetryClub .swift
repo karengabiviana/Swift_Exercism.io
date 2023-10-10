@@ -89,7 +89,10 @@ class TheFirstRuleOfPoetryClub {
 //    => "Stands so high"
     func trimSentence(_ line: String) -> String {
         line.trimmingCharacters(in: .whitespaces)
-
+    }
+//    Task 8 - Implement the function lastLetter(_:) that returns the last letter of a sentence. If there is no last letter, return an underscore (_):
+    func lastLetter(_ line: String) -> Character {
+        line.last ?? "_"
     }
 }
 
@@ -151,6 +154,20 @@ class TheFirstRuleOfPoetryClubTests: XCTestCase {
         let input = "Stands so high"
         let output = theFirstRuleOfPoetryClubTestsClass.trimSentence(input)
         let outputExpected = "Stands so high"
+        XCTAssertEqual(output, outputExpected)
+    }
+    //Task 8 Tests
+    func testLastLetter() {
+        let input = "Stands so high"
+        let output = theFirstRuleOfPoetryClubTestsClass.lastLetter(input)
+        let outputExpected = Character("h")
+        XCTAssertEqual(output, outputExpected)
+    }
+
+    func testLastLetterEmpty() {
+        let input = ""
+        let output = theFirstRuleOfPoetryClubTestsClass.lastLetter(input)
+        let outputExpected = Character("_")
         XCTAssertEqual(output, outputExpected)
     }
 }
