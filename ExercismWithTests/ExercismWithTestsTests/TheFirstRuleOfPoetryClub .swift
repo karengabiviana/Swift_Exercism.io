@@ -117,6 +117,18 @@ class TheFirstRuleOfPoetryClub {
         }
         return result
     }
+
+    //Task 11 - Implement the function secretRoomPassword(_:) that takes a string as input and formats it in the shouting manner required for the secret room password:
+    func secretRoomPassword(_ phrase: String) -> String {
+        var secret = ""
+        if !phrase.isEmpty {
+            secret = phrase.uppercased()
+            secret += "!"
+            return secret
+        }
+        return secret
+    }
+
 }
 
 class TheFirstRuleOfPoetryClubTests: XCTestCase {
@@ -240,5 +252,19 @@ class TheFirstRuleOfPoetryClubTests: XCTestCase {
         let outputExpected = Character(" ")
         XCTAssertEqual(output, outputExpected)
     }
-    
+
+    //Task 11 Tests
+    func testSecretRoomPassword() {
+        let input = "super"
+        let output = theFirstRuleOfPoetryClubTestsClass.secretRoomPassword(input)
+        let outputExpected = "SUPER!"
+        XCTAssertEqual(output, outputExpected)
+    }
+
+    func testSecretRoomPasswordEmpty() {
+        let input = ""
+        let output = theFirstRuleOfPoetryClubTestsClass.secretRoomPassword(input)
+        let outputExpected = ""
+        XCTAssertEqual(output, outputExpected)
+    }
 }
