@@ -26,6 +26,13 @@ class LasagnaMaster {
 
     //To make things easier for yourself, write a function, preparationTimeInMinutes that takes a variadic String parameter, layers, where you list the different layers in your lasagna. The function will then count the number of layers in your lasagna, and return the amount of preparation time required.
     // TODO: define the 'preparationTimeInMinutes' function
+    func preparationTimeInMinutes(layers: String...) -> Int {
+        var numberLayers = 0
+        for _ in layers {
+            numberLayers += 1
+        }
+        return numberLayers * 2
+    }
 
     //Task 3
     //Before you start to assemble your lasagna, you want to make sure you have enough sauce and noodles to build the lasagna of your dreams. For each noodle layer in your lasagna, you will need 3 noodles. For each sauce layer in your lasagna, you will need 0.2 liters of sauce.
@@ -76,6 +83,12 @@ class LasagnaMasterTest: XCTestCase {
     }
 
     //Task 2 Tests
+    func testPreparationTimeInMinutes() {
+        XCTAssertEqual(lasagnaMasterClass.preparationTimeInMinutes(layers: "sauce", "noodles"), 4)
+    }
+    func testPreparationTimeInMinutesALotOfLayers() {
+        XCTAssertEqual(lasagnaMasterClass.preparationTimeInMinutes(layers: "sauce", "noodles", "sauce", "meat", "mozzarella", "noodles", "sauce", "eggplant", "béchamel", "noodles", "sauce", "mozzarella"), 24)
+    }
 
     //Task 3 Tests
 
