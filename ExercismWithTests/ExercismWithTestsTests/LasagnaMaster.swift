@@ -17,6 +17,9 @@ class LasagnaMaster {
 
     //To clean things up, define the remainingMinutesInOven function that takes the number of elapsed minutes the lasagna has been in the oven as a parameter, as well as an expectedMinutesInOven parameter that has a default value of 40. Your function should return how many minutes the lasagna still has to remain in the oven, based on the expected oven time in minutes from the previous task.
     // TODO: define the 'remainingMinutesInOven' function
+    func remainingMinutesInOven(elapsedMinutes: Int, expectedMinutesInOven: Int = 40) -> Int {
+        expectedMinutesInOven - elapsedMinutes
+    }
 
     //Task 2
     //You had previously written a preparationTimeInMinutes function that takes the number of layers you added to the lasagna as a parameter and returns how many minutes you spent preparing the lasagna, assuming each layer takes you 2 minutes to prepare. However, you are not particularly happy with this function, as you have to count the number of layers in your lasagna yourself before you can call this function, and who has time for all that?
@@ -41,7 +44,36 @@ class LasagnaMaster {
 }
 
 class LasagnaMasterTest: XCTestCase {
+    let lasagnaMasterClass = LasagnaMaster()
     //Task 1 Tests
+    func testRemainingMinutesInOvenDefaultMinutes() {
+        let input = 30
+        let outputExpected = 10
+        let output = lasagnaMasterClass.remainingMinutesInOven(elapsedMinutes: input)
+        XCTAssertEqual(output, outputExpected)
+    }
+
+    func testRemainingMinutesInOvenUsingOtherParameter() {
+        let inputElapse = 30
+        let inputExpected = 75
+        let outputExpected = 45
+        let output = lasagnaMasterClass.remainingMinutesInOven(elapsedMinutes: inputElapse, expectedMinutesInOven: inputExpected)
+        XCTAssertEqual(output, outputExpected)
+    }
+    func testRemainingMinutesInOvenOtherParameterZero() {
+        let inputElapse = 30
+        let inputExpected = 0
+        let outputExpected = -30
+        let output = lasagnaMasterClass.remainingMinutesInOven(elapsedMinutes: inputElapse, expectedMinutesInOven: inputExpected)
+        XCTAssertEqual(output, outputExpected)
+    }
+    func testRemainingMinutesInOvenFirstParameterZero() {
+        let inputElapse = 0
+        let inputExpected = 50
+        let outputExpected = 50
+        let output = lasagnaMasterClass.remainingMinutesInOven(elapsedMinutes: inputElapse, expectedMinutesInOven: inputExpected)
+        XCTAssertEqual(output, outputExpected)
+    }
 
     //Task 2 Tests
 
