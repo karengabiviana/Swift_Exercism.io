@@ -106,6 +106,17 @@ class TheFirstRuleOfPoetryClub {
         }
         return bePolite
     }
+//    Task 10 - Implement the function ithLetter(_:i:) that returns the ith letter of a sentence. If there is no ith letter, return a space:
+    func ithLetter(_ line: String, i: Int) -> Character {
+        var result: Character = " "
+
+        if line.count >= i && i > 0  {
+            result = line[line.index(line.startIndex, offsetBy: i)]
+        } else {
+            return result
+        }
+        return result
+    }
 }
 
 class TheFirstRuleOfPoetryClubTests: XCTestCase {
@@ -197,4 +208,37 @@ class TheFirstRuleOfPoetryClubTests: XCTestCase {
         let outputExpected = ""
         XCTAssertEqual(output, outputExpected)
     }
+    //Task 10 Tests
+    func testIthLetter() {
+        let inputLine = "Diego and Bituca are cats"
+        let inputI = 7
+        let output = theFirstRuleOfPoetryClubTestsClass.ithLetter(inputLine, i: inputI)
+        let outputExpected = Character("n")
+        XCTAssertEqual(output, outputExpected)
+    }
+
+    func testIthLetterIthMoreThanQuantityOfCharacters() {
+        let inputLine = "Diego and Bituca are cats"
+        let inputI = 100
+        let output = theFirstRuleOfPoetryClubTestsClass.ithLetter(inputLine, i: inputI)
+        let outputExpected = Character(" ")
+        XCTAssertEqual(output, outputExpected)
+    }
+
+    func testIthLetterIthLessThanZero() {
+        let inputLine = "Diego and Bituca are cats"
+        let inputI = -1
+        let output = theFirstRuleOfPoetryClubTestsClass.ithLetter(inputLine, i: inputI)
+        let outputExpected = Character(" ")
+        XCTAssertEqual(output, outputExpected)
+    }
+
+    func testIthLetterEmptyString() {
+        let inputLine = ""
+        let inputI = 7
+        let output = theFirstRuleOfPoetryClubTestsClass.ithLetter(inputLine, i: inputI)
+        let outputExpected = Character(" ")
+        XCTAssertEqual(output, outputExpected)
+    }
+    
 }
