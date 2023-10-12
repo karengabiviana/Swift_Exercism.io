@@ -94,6 +94,18 @@ class TheFirstRuleOfPoetryClub {
     func lastLetter(_ line: String) -> Character {
         line.last ?? "_"
     }
+//    Task 9 - Implement the function backDoorPassword(_:) that takes a string as input and formats it in the polite manner required for the backdoor password:
+//    backDoorPassword("horse")
+//    => "Horse, please"
+    func backDoorPassword(_ phrase: String) -> String {
+        var bePolite = ""
+        if !phrase.isEmpty {
+            bePolite = capitalize(phrase)
+            bePolite += ", please"
+            return bePolite
+        }
+        return bePolite
+    }
 }
 
 class TheFirstRuleOfPoetryClubTests: XCTestCase {
@@ -168,6 +180,21 @@ class TheFirstRuleOfPoetryClubTests: XCTestCase {
         let input = ""
         let output = theFirstRuleOfPoetryClubTestsClass.lastLetter(input)
         let outputExpected = Character("_")
+        XCTAssertEqual(output, outputExpected)
+    }
+
+    //Task 9 Tests
+    func testbackDoorPassword() {
+        let input = "horse"
+        let output = theFirstRuleOfPoetryClubTestsClass.backDoorPassword(input)
+        let outputExpected = "Horse, please"
+        XCTAssertEqual(output, outputExpected)
+    }
+
+    func testbackDoorPasswordEmpty() {
+        let input = ""
+        let output = theFirstRuleOfPoetryClubTestsClass.backDoorPassword(input)
+        let outputExpected = ""
         XCTAssertEqual(output, outputExpected)
     }
 }
