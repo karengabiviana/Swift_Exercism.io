@@ -39,6 +39,21 @@ class LasagnaMaster {
 
    // Define the function quantities that takes a variadic String parameter, layers, where you list the different layers in your lasagna. The function will then determine the quantity of noodles and sauce needed to make your meal. The result should be returned in a tuple of type (noodles: Int, sauce: Double).
     // TODO: define the 'quantities' function
+    func quantities(layers: String...) -> (noodles: Int, sauce: Double) {
+        var noodlesVar = 0
+        var sauceVar = 0.0
+        for layer in layers {
+            if layer == "noodles" {
+                noodlesVar += 1
+            } else if layer == "sauce" {
+                sauceVar += 1
+            }
+        }
+        noodlesVar *= 3
+        sauceVar *= 0.2
+
+        return (noodles: noodlesVar, sauce: sauceVar)
+    }
 
     //Task 4
     //Unfortunately, the sauce you have on hand has the volume is listed in fluid ounces instead of liters. To help let you know if you have enough sauce on hand, write a function, toOz, that takes an in-out tuple parameter, (noodles: Int, sauce: Double), and converts the quantity of sauce to fluid ounces. Note that there are 33.814 fluid ounces per liter.
@@ -91,6 +106,16 @@ class LasagnaMasterTest: XCTestCase {
     }
 
     //Task 3 Tests
+    func testQuantitiesAFewIngredients() {
+        let output = lasagnaMasterClass.quantities(layers: "sauce", "noodles")
+        let outputExpected = (noodles: 3, sauce: 0.2)
+        XCTAssertTrue(output.noodles == outputExpected.noodles && output.sauce == outputExpected.sauce)
+    }
+    func testQuantitiesMoreIngredientes() {
+        let output = lasagnaMasterClass.quantities(layers: "sauce", "noodles", "sauce", "meat", "mozzarella", "noodles", "sauce", "eggplant", "béchamel", "noodles", "sauce", "mozzarella")
+        let outputExpected = (noodles: 9, sauce: 0.8)
+        XCTAssertTrue(output.noodles == outputExpected.noodles && output.sauce == outputExpected.sauce)
+    }
 
     //Task 4 Tests
 
