@@ -58,6 +58,12 @@ class LasagnaMaster {
     //Task 4
     //Unfortunately, the sauce you have on hand has the volume is listed in fluid ounces instead of liters. To help let you know if you have enough sauce on hand, write a function, toOz, that takes an in-out tuple parameter, (noodles: Int, sauce: Double), and converts the quantity of sauce to fluid ounces. Note that there are 33.814 fluid ounces per liter.
     // TODO: define the 'toOz' function
+    func toOz(_ value: inout (noodles: Int, sauce: Double)) -> (noodles: Int, sauce: Double) {
+        var result = value
+        result.sauce *= 33.814
+        return result
+    }
+
 
     //Task 5
     //Finally, you want to know what kind of wine to serve with your lasagna. You've heard that you should serve white wine if there is more mozzarella, ricotta, and béchamel in the lasagna than there is meat and sauce, and red wine otherwise. Write a function redWine that takes a variadic String parameter, layers, where you list the different layers in your lasagna. The function will use five nested functions to determine the number of layers of mozzarella, ricotta, béchamel, sauce, and meat in the lasagna, and compare the numbers of layers to determine if red wine should be served, returning true if so and false if not.
@@ -118,6 +124,18 @@ class LasagnaMasterTest: XCTestCase {
     }
 
     //Task 4 Tests
+    func testToOz() {
+        var input = (noodles: 9, sauce: 0.8)
+        let output = lasagnaMasterClass.toOz(&input)
+        let outputExpected = (noodles: 9, sauce: 27.0512)
+        XCTAssertTrue(output.noodles == outputExpected.noodles && output.sauce == outputExpected.sauce)
+    }
+    func testToOzZero() {
+        var input = (noodles: 9, sauce: 0.0)
+        let output = lasagnaMasterClass.toOz(&input)
+        let outputExpected = (noodles: 9, sauce: 0.0)
+        XCTAssertTrue(output.noodles == outputExpected.noodles && output.sauce == outputExpected.sauce)
+    }
 
     //Task 5 Tests
 
