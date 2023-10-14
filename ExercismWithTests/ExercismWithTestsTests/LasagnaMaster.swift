@@ -68,7 +68,22 @@ class LasagnaMaster {
     //Task 5
     //Finally, you want to know what kind of wine to serve with your lasagna. You've heard that you should serve white wine if there is more mozzarella, ricotta, and béchamel in the lasagna than there is meat and sauce, and red wine otherwise. Write a function redWine that takes a variadic String parameter, layers, where you list the different layers in your lasagna. The function will use five nested functions to determine the number of layers of mozzarella, ricotta, béchamel, sauce, and meat in the lasagna, and compare the numbers of layers to determine if red wine should be served, returning true if so and false if not.
     // TODO: define the 'redWine' function
+    func redWine(layers: String...) -> Bool {
+        var whiteWine = 0
+        var redWine = 0
 
+        for layer in layers {
+            switch layer {
+            case "mozzarella", "ricotta", "béchamel":
+                whiteWine += 1
+            case "meat", "sauce":
+                redWine += 1
+            default:
+                redWine += 0
+            }
+        }
+        return redWine >= whiteWine
+    }
 }
 
 class LasagnaMasterTest: XCTestCase {
@@ -138,5 +153,14 @@ class LasagnaMasterTest: XCTestCase {
     }
 
     //Task 5 Tests
+    func testRedWineTrue() {
+        XCTAssertTrue(lasagnaMasterClass.redWine(layers: "sauce", "noodles", "sauce", "meat", "mozzarella", "noodles", "sauce", "eggplant", "béchamel", "noodles", "sauce", "mozzarella"))
+    }
+    func testRedWineFalse() {
+        XCTAssertFalse(lasagnaMasterClass.redWine(layers: "sauce", "noodles", "béchamel", "meat", "mozzarella", "noodles", "ricotta", "eggplant", "béchamel", "noodles", "sauce", "mozzarella"))
+    }
+    func testRedWineATie() {
+        XCTAssertTrue(lasagnaMasterClass.redWine(layers:  "sauce","béchamel", "meat","mozzarella", "sauce", "ricotta" ))
+    }
 
 }
