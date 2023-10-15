@@ -59,9 +59,8 @@ class LasagnaMaster {
     //Unfortunately, the sauce you have on hand has the volume is listed in fluid ounces instead of liters. To help let you know if you have enough sauce on hand, write a function, toOz, that takes an in-out tuple parameter, (noodles: Int, sauce: Double), and converts the quantity of sauce to fluid ounces. Note that there are 33.814 fluid ounces per liter.
     // TODO: define the 'toOz' function
     func toOz(_ value: inout (noodles: Int, sauce: Double)) -> (noodles: Int, sauce: Double) {
-        var result = value
-        result.sauce *= 33.814
-        return result
+        value.sauce *= 33.814
+        return value
     }
 
 
@@ -140,9 +139,10 @@ class LasagnaMasterTest: XCTestCase {
 
     //Task 4 Tests
     func testToOz() {
-        var input = (noodles: 9, sauce: 0.8)
+        var input = (noodles: 6, sauce: 0.6)
         let output = lasagnaMasterClass.toOz(&input)
-        let outputExpected = (noodles: 9, sauce: 27.0512)
+        let outputExpected = (noodles: 6, sauce: 20.2884)
+        print(output)
         XCTAssertTrue(output.noodles == outputExpected.noodles && output.sauce == outputExpected.sauce)
     }
     func testToOzZero() {
