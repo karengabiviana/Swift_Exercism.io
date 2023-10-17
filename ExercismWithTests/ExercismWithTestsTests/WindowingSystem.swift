@@ -32,6 +32,15 @@ import XCTest
 
     //Include a method moveTo(newX:newY:) that takes new x and y parameters and changes the properties to reflect the new position.
     // TODO: Define the Position struct
+struct Position {
+    var x = 0
+    var y = 0
+
+    mutating func moveTo(newX: Int, newY: Int) {
+        x = newX
+        y = newY
+    }
+}
 
     //Task 1
     //Define a struct named Size with two Int properties, width and height that store the window's current width and height, respectively. The initial width and height should be 80 and 60, respectively. Include a method resize(newWidth:newHeight:) that takes new width and height parameters and changes the properties to reflect the new size.
@@ -72,6 +81,15 @@ class  WindowingSystemTest: XCTestCase {
     }
 
     //Task 2 Tests
+    func testPositionMoveTo() {
+        var point = Position(x: 10, y: 20)
+        point.moveTo(newX: 100, newY: -100)
+
+        let output = point
+        let outputExpected = (newX: 100, newY: -100)
+
+        XCTAssertTrue(output.x == outputExpected.newX && output.y == outputExpected.newY)
+    }
 
     //Task 3 Tests
 }
