@@ -71,8 +71,15 @@ class Window {
     var size = Size()
     var position = Position()
     var contents: String? = nil
-}
 
+    //Task 4
+    //resize(to:) : (Size) -> () - This method takes a Size struct as input and attempts to resize the window to the specified size. However, the new size cannot exceed certain bounds. - The minimum allowed height or width is 1. Requested heights or widths less than 1 will be clipped to 1. - The maximum height and width depends on the current position of the window, the edges of the window cannot move past the edges of the screen. Values larger than these bounds will be clipped to the largest size they can take. E.g. if the window's position is at x = 400, y = 300 and a resize to height = 400, width = 300 is requested, then the window would be resized to height = 300, width = 300 as the screen is not large enough in the y direction to fully accommodate the request.
+    func resize(to newSize: Size) -> () {
+        size = Size(
+            width: min(max(1, newSize.width), screenSize.width - position.x),
+            height: min(max(1,newSize.height), screenSize.height - position.y))
+    }
+}
 
 class  WindowingSystemTest: XCTestCase {
     //Task 1 Tests
@@ -111,4 +118,24 @@ class  WindowingSystemTest: XCTestCase {
                       window.contents == nil)
 
     }
+    //Task 4 Tests
+    func testResizeFromWindowZero() {
+        let window = Window()
+        window.position = Position(x: 400, y: 300)
+        window.size = Size(width: 0, height: 400)
+        window.resize(to: window.size)
+        let expected = Size(width: 1, height: 300)
+        XCTAssertTrue(window.size.height == expected.height && window.size.width == expected.width)
+    }
+
+    func testResizeFromWindow() {
+        let window = Window()
+        window.position = Position(x: 400, y: 300)
+        window.size = Size(width: 300, height: 400)
+        window.resize(to: window.size)
+        let expected = Size(width: 300, height: 300)
+        XCTAssertTrue(window.size.height == expected.height && window.size.width == expected.width)
+
+    }
+
 }
