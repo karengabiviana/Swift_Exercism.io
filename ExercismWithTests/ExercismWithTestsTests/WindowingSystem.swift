@@ -79,6 +79,14 @@ class Window {
             width: min(max(1, newSize.width), screenSize.width - position.x),
             height: min(max(1,newSize.height), screenSize.height - position.y))
     }
+
+    //Task 5
+    //move(to:) : (Position) -> () - This is similar to resize(to:), however, this method adjusts the position of the window to the requested value, rather than the size. As with resize the new position cannot exceed certain limits. - The smallest position is 0 for both x and y. - The maximum position in either direction depends on the current size of the window; the edges cannot move past the edges of the screen. Values larger than these bounds will be clipped to the largest size they can take. E.g. if the window's size is at x = 250, y = 100 and a move to x = 600, y = 200 is requested, then the window would be moved to x = 550, y = 200 as the screen is not large enough in the x direction to fully accommodate the request.
+    func move(to newPosition: Position) {
+        position = Position(
+            x: min(max(0, newPosition.x), screenSize.width - size.width),
+            y: min(max(0, newPosition.y), screenSize.height - size.height))
+    }
 }
 
 class  WindowingSystemTest: XCTestCase {
@@ -136,6 +144,28 @@ class  WindowingSystemTest: XCTestCase {
         let expected = Size(width: 300, height: 300)
         XCTAssertTrue(window.size.height == expected.height && window.size.width == expected.width)
 
+    }
+    //Task 5 Tests
+    func testMove() {
+        let window = Window()
+        window.size = Size(width: 250, height: 400)
+        window.position = Position(x: 250, y: 100)
+        let newPosition = Position(x: 600, y: 200)
+        window.move(to: newPosition)
+        let expected = Position(x: 550, y: 200)
+        print(window.position.x, window.position.y)
+        XCTAssertTrue(window.position.x == expected.x && window.position.y == expected.y)
+    }
+
+    func testMoveLessThanZero() {
+        let window = Window()
+        window.size = Size(width: 250, height: 400)
+        window.position = Position(x: 250, y: 100)
+        let newPosition = Position(x: -2, y: 200)
+        window.move(to: newPosition)
+        let expected = Position(x: 0, y: 200)
+        print(window.position.x, window.position.y)
+        XCTAssertTrue(window.position.x == expected.x && window.position.y == expected.y)
     }
 
 }
