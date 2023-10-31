@@ -87,6 +87,19 @@ class Window {
             x: min(max(0, newPosition.x), screenSize.width - size.width),
             y: min(max(0, newPosition.y), screenSize.height - size.height))
     }
+    //Task 6
+    //update(title:) : (String) -> () - This method sets the title property to the value of the string that was passed in.
+    func update(title: String) {
+        self.title = title
+    }
+    //update(text:) : (String?) -> () - This method sets the contents property to the value of the optional string that was passed in.
+    func update(text: String) {
+        contents = text
+    }
+    //display() : () -> String - This method returns a string describing the current state of the window. For example, if the window has the title "My First Window" with position: x = 10, y = 100; size: width = 200, height = 150; and contents: "I 😍 my window", it should return the string: "My First Window\nPosition: (10, 100), Size: (200 x 150)\nI 😍 my window\n" - If contents is nil, the last line should read "[This window intentionally left blank]"
+    func display() -> String {
+        "\(title)\nPosition: (\(position.x), \(position.y)), Size: (\(size.width) x \(size.height))\n\(contents ?? "")\n"
+    }
 }
 
 class  WindowingSystemTest: XCTestCase {
@@ -168,4 +181,41 @@ class  WindowingSystemTest: XCTestCase {
         XCTAssertTrue(window.position.x == expected.x && window.position.y == expected.y)
     }
 
+    //Task 6 tests
+    func testUpdateTitle() {
+        let window = Window()
+        window.update(title: "Title")
+        let expected = "Title"
+        XCTAssertEqual(window.title, expected)
+    }
+
+    func testUpdatText() {
+        let window = Window()
+        window.update(text: "Is it an optional?")
+        let expected = "Is it an optional?"
+        XCTAssertEqual(window.contents, expected)
+    }
+
+    func testDisplay() {
+        let window = Window()
+        window.title = "My First Window"
+        window.size = Size(width: 200, height: 150)
+        window.position = Position(x: 10, y: 100)
+        window.contents = "I 😍 my window"
+        let output = window.display()
+        let expected = "My First Window\nPosition: (10, 100), Size: (200 x 150)\nI 😍 my window\n"
+        print(output)
+        XCTAssertEqual(output, expected)
+    }
+    func testDisplayWithEmptyContents() {
+        let window = Window()
+        window.title = "My First Window"
+        window.size = Size(width: 200, height: 150)
+        window.position = Position(x: 10, y: 100)
+        window.contents = nil
+        let output = window.display()
+        let expected = "My First Window\nPosition: (10, 100), Size: (200 x 150)\n\n"
+        print(output)
+        XCTAssertEqual(output, expected)
+    }
 }
