@@ -38,6 +38,19 @@ struct Size {
         height = newHeight
     }
 }
+//Task 2
+//Define a struct named Position with two Int properties, x and y that store the current horizontal and vertical position, respectively, of the window's upper left corner. The initial values of x and y should each be 0. The position (0, 0) is the upper left corner of the screen with x values getting larger as you move right and y values getting larger as you move down.
+//Include a method moveTo(newX:newY:) that takes new x and y parameters and changes the properties to reflect the new position.
+// TODO: Define the Position struct
+struct Position {
+    var x = 0
+    var y = 0
+
+    mutating func moveTo(newX: Int, newY: Int) {
+        x = newX
+        y = newY
+    }
+}
 
 class  WindowingSystemTest: XCTestCase {
     //Task 1 Tests
@@ -45,10 +58,21 @@ class  WindowingSystemTest: XCTestCase {
         let size1080x764 = Size(width: 1080, height: 764)
         var size1200x800 = size1080x764
         size1200x800.resize(newWidth: 1200, newHeight: 800)
-        
+
         let output = size1200x800
         let outputExpected = (width: 1200, height: 800)
-        
+
         XCTAssertTrue(output.width == outputExpected.width && output.height == outputExpected.height )
+    }
+
+    //Task 2 Tests
+    func testPositionMoveTo() {
+        var point = Position(x: 10, y: 20)
+        point.moveTo(newX: 100, newY: -100)
+
+        let output = point
+        let outputExpected = (newX: 100, newY: -100)
+
+        XCTAssertTrue(output.x == outputExpected.newX && output.y == outputExpected.newY)
     }
 }
