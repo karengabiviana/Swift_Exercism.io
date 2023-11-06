@@ -51,6 +51,21 @@ struct Position {
         y = newY
     }
 }
+//Task 3
+//Define a window class with the following properties:
+//title : String, Initial value is "New Window"
+//screenSize : Size, constant value with width = 800 and height = 600
+//size : Size, initial value is the default value of the Size struct
+//position : Position, initial value is the default value of the Position struct
+//contents : String?, initial value is nil
+// TODO: Define the Window class
+class Window {
+    var title: String = "New Window"
+    let screenSize = Size(width: 800, height: 600)
+    var size = Size()
+    var position = Position()
+    var contents: String? = nil
+}
 
 class  WindowingSystemTest: XCTestCase {
     //Task 1 Tests
@@ -75,4 +90,18 @@ class  WindowingSystemTest: XCTestCase {
 
         XCTAssertTrue(output.x == outputExpected.newX && output.y == outputExpected.newY)
     }
+
+    //Task 3 Tests
+        func testWindowClass() {
+            let window = Window()
+            XCTAssertTrue(window.title == "New Window" &&
+                          window.screenSize.width == 800 &&
+                          window.screenSize.height == 600 &&
+                          window.size.width == 80 &&
+                          window.size.height == 60 &&
+                          window.position.x == 0 &&
+                          window.position.y == 0 &&
+                          window.contents == nil)
+
+        }
 }
