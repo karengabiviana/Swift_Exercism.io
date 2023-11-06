@@ -94,6 +94,17 @@ class Window {
         "\(title)\nPosition: (\(position.x), \(position.y)), Size: (\(size.width) x \(size.height))\n\(contents ?? "[This window intentionally left blank]")\n"
     }
 }
+//Task 7
+//Create an instances of the Window class and modify it via their methods as follows:
+//The window should be given the title "Main Window", with a width of 400, a height of 300 and positioned at x = 100, y = 100. Its contents should be "This is the main window". Assign this instance to the name mainWindow.
+let mainWindow: Window = {
+    let window = Window()
+    window.update(title: "Main Window")
+    window.resize(to: Size(width: 400, height: 300))
+    window.move(to: Position(x: 100, y: 100))
+    window.update(text: "This is the main window")
+    return window
+}()
 
 class  WindowingSystemTest: XCTestCase {
     //Task 1 Tests
@@ -207,5 +218,20 @@ class  WindowingSystemTest: XCTestCase {
         let output = window.display()
         let expected = "My First Window\nPosition: (10, 100), Size: (200 x 150)\n[This window intentionally left blank]\n"
         XCTAssertEqual(output, expected)
+    }
+    //Task 7 Tests
+    func testMainWindow() {
+        let output = mainWindow
+        let expectedTitle = "Main Window"
+        let expectedSize = Size(width: 400, height: 300)
+        let expectedPosition = Position(x: 100, y: 100)
+        let expectedContents = "This is the main window"
+
+        XCTAssertTrue(output.title == expectedTitle &&
+                      output.size.height == expectedSize.height &&
+                      output.size.width == expectedSize.width &&
+                      output.position.x == expectedPosition.x &&
+                      output.position.y == expectedPosition.y &&
+                      output.contents == expectedContents)
     }
 }
