@@ -93,12 +93,12 @@ class Window {
         self.title = title
     }
     //update(text:) : (String?) -> () - This method sets the contents property to the value of the optional string that was passed in.
-    func update(text: String) {
+    func update(text: String?) {
         contents = text
     }
     //display() : () -> String - This method returns a string describing the current state of the window. For example, if the window has the title "My First Window" with position: x = 10, y = 100; size: width = 200, height = 150; and contents: "I 😍 my window", it should return the string: "My First Window\nPosition: (10, 100), Size: (200 x 150)\nI 😍 my window\n" - If contents is nil, the last line should read "[This window intentionally left blank]"
     func display() -> String {
-        "\(title)\nPosition: (\(position.x), \(position.y)), Size: (\(size.width) x \(size.height))\n\(contents ?? "")\n"
+        "\(title)\nPosition: (\(position.x), \(position.y)), Size: (\(size.width) x \(size.height))\n\(contents ?? "[This window intentionally left blank]")\n"
     }
 }
 
@@ -226,7 +226,7 @@ class  WindowingSystemTest: XCTestCase {
         window.position = Position(x: 10, y: 100)
         window.contents = nil
         let output = window.display()
-        let expected = "My First Window\nPosition: (10, 100), Size: (200 x 150)\n\n"
+        let expected = "My First Window\nPosition: (10, 100), Size: (200 x 150)\n[This window intentionally left blank]\n"
         XCTAssertEqual(output, expected)
     }
     //Task 7 Tests
