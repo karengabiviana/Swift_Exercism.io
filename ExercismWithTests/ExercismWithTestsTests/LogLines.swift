@@ -91,5 +91,32 @@ enum LogLevel: Int {
 }
 
 class LogLinesTests: XCTestCase {
-
+    func testInitTrace() {
+        let line = "[TRC]: Line 84 - Console.WriteLine('Hello World');"
+        XCTAssertEqual(LogLevel(line), LogLevel.trace)
+    }
+    func testInitDebug() {
+        let line = "[DBG]: ; expected"
+        XCTAssertEqual(LogLevel(line), LogLevel.debug)
+    }
+    func testInitWarning() {
+        let line = "[WRN]: Timezone not set"
+        XCTAssertEqual(LogLevel(line), LogLevel.warning)
+    }
+    func testInitError() {
+        let line = "[ERR]: Disk full"
+        XCTAssertEqual(LogLevel(line), LogLevel.error)
+    }
+    func testInitFatal() {
+        let line = "[FTL]: Not enough memory"
+        XCTAssertEqual(LogLevel(line), LogLevel.fatal)
+    }
+    func testInitUnknownEmpty() {
+        let line = "Something terrible has happened!"
+        XCTAssertEqual(LogLevel(line), LogLevel.unknown)
+    }
+    func testInitUnknownNonStandard() {
+        let line = "[XYZ]: Gibberish message.. beep boop.."
+        XCTAssertEqual(LogLevel(line), LogLevel.unknown)
+    }
 }
