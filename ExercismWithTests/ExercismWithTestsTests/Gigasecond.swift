@@ -37,5 +37,19 @@ func gigasecond(from: Date) -> Date {
 }
 
 class GigasecondsTests: XCTestCase {
-    
+    func testGigasecond() {
+        // Arrange
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+
+        let inputDateString = "2015-01-24 22:00:00"
+        let inputDate = dateFormatter.date(from: inputDateString)
+
+        let outputDateString = "2046-10-02 23:46:40"
+        let outputDate = dateFormatter.date(from: outputDateString)
+        // Act
+        let result = gigasecond(from: inputDate ?? Date())
+        // Assert
+        XCTAssertEqual(result, outputDate)
+    }
 }
