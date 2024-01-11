@@ -33,7 +33,11 @@ import XCTest
 
 func gigasecond(from: Date) -> Date {
   // Write your code for the 'Gigasecond' exercise in this file.
-    return Date()
+    let date = from
+    let seconds = 1_000_000_000
+    let result = date.addingTimeInterval(TimeInterval(seconds))
+
+    return result
 }
 
 class GigasecondsTests: XCTestCase {
