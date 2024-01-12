@@ -33,11 +33,13 @@ import XCTest
 
 func gigasecond(from: Date) -> Date {
   // Write your code for the 'Gigasecond' exercise in this file.
-    let date = from
     let seconds = 1_000_000_000
-    let result = date.addingTimeInterval(TimeInterval(seconds))
+    let calendar = Calendar(identifier: .gregorian)
+    var component = DateComponents()
+    component.second = seconds
+    let result = calendar.date(byAdding: component, to: from )
 
-    return result
+    return result ?? Date()
 }
 
 class GigasecondsTests: XCTestCase {
@@ -45,6 +47,7 @@ class GigasecondsTests: XCTestCase {
         // Arrange
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        dateFormatter.timeZone = TimeZone(identifier: "America/Sao_Paulo")
 
         let inputDateString = "2015-01-24 22:00:00"
         let inputDate = dateFormatter.date(from: inputDateString)
@@ -54,6 +57,9 @@ class GigasecondsTests: XCTestCase {
         // Act
         let result = gigasecond(from: inputDate ?? Date())
         // Assert
+        let calendar = Calendar(identifier: .gregorian)
+        let utcTimeZone = TimeZone(identifier: "UTC")
+        let inputInUTC = calendar.date(byAdding: .timeZone, value: utcTimeZone, to: result)
         XCTAssertEqual(result, outputDate)
     }
 }
