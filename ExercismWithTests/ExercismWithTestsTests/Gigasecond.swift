@@ -32,14 +32,10 @@ import XCTest
 // If you were born on January 24th, 2015 at 22:00 (10:00:00pm), then you would be a gigasecond old on October 2nd, 2046 at 23:46:40 (11:46:40pm).
 
 func gigasecond(from: Date) -> Date {
-  // Write your code for the 'Gigasecond' exercise in this file.
-    let seconds = 1_000_000_000
-    let calendar = Calendar(identifier: .gregorian)
-    var component = DateComponents()
-    component.second = seconds
-    let result = calendar.date(byAdding: component, to: from )
-
-    return result ?? Date()
+    var dateFormatter = DateFormatter()
+    dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+    let fromFormatted = dateFormatter.date(from: from.description)
+    return from.addingTimeInterval(TimeInterval(1_000_000_000))
 }
 
 class GigasecondsTests: XCTestCase {
@@ -47,7 +43,7 @@ class GigasecondsTests: XCTestCase {
         // Arrange
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        dateFormatter.timeZone = TimeZone(identifier: "America/Sao_Paulo")
+        dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
 
         let inputDateString = "2015-01-24 22:00:00"
         let inputDate = dateFormatter.date(from: inputDateString)
@@ -57,9 +53,6 @@ class GigasecondsTests: XCTestCase {
         // Act
         let result = gigasecond(from: inputDate ?? Date())
         // Assert
-        let calendar = Calendar(identifier: .gregorian)
-        let utcTimeZone = TimeZone(identifier: "UTC")
-        let inputInUTC = calendar.date(byAdding: .timeZone, value: utcTimeZone, to: result)
         XCTAssertEqual(result, outputDate)
     }
 }
