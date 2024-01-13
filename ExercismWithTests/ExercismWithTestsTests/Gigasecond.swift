@@ -32,9 +32,6 @@ import XCTest
 // If you were born on January 24th, 2015 at 22:00 (10:00:00pm), then you would be a gigasecond old on October 2nd, 2046 at 23:46:40 (11:46:40pm).
 
 func gigasecond(from: Date) -> Date {
-    var dateFormatter = DateFormatter()
-    dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
-    let fromFormatted = dateFormatter.date(from: from.description)
     return from.addingTimeInterval(TimeInterval(1_000_000_000))
 }
 
