@@ -15,6 +15,7 @@
 		D61AC9DF2A98F91C003EDF1C /* Double-Null0111-ClosuresAreForever.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61AC9DE2A98F91C003EDF1C /* Double-Null0111-ClosuresAreForever.swift */; };
 		D64848752AF97B8900798430 /* WindowingSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64848742AF97B8900798430 /* WindowingSystem.swift */; };
 		D64CD19A2ACCBA9D00A4FD8A /* DifferenceOfSquares.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64CD1992ACCBA9D00A4FD8A /* DifferenceOfSquares.swift */; };
+		D678D7FB2B2F55790074CE44 /* Gigasecond.swift in Sources */ = {isa = PBXBuildFile; fileRef = D678D7FA2B2F55790074CE44 /* Gigasecond.swift */; };
 		D6B0E17A2A8281EB0044895E /* Santa'sSwiftyHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B0E1792A8281EB0044895E /* Santa'sSwiftyHelper.swift */; };
 		D6B0E17C2A83D9950044895E /* SliceSizing.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B0E17B2A83D9950044895E /* SliceSizing.swift */; };
 		D6B0E17E2A841B6A0044895E /* MasterMixologist.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B0E17D2A841B6A0044895E /* MasterMixologist.swift */; };
@@ -47,6 +48,7 @@
 		D61AC9DE2A98F91C003EDF1C /* Double-Null0111-ClosuresAreForever.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double-Null0111-ClosuresAreForever.swift"; sourceTree = "<group>"; };
 		D64848742AF97B8900798430 /* WindowingSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowingSystem.swift; sourceTree = "<group>"; };
 		D64CD1992ACCBA9D00A4FD8A /* DifferenceOfSquares.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifferenceOfSquares.swift; sourceTree = "<group>"; };
+		D678D7FA2B2F55790074CE44 /* Gigasecond.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gigasecond.swift; sourceTree = "<group>"; };
 		D6B0E1792A8281EB0044895E /* Santa'sSwiftyHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Santa'sSwiftyHelper.swift"; sourceTree = "<group>"; };
 		D6B0E17B2A83D9950044895E /* SliceSizing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliceSizing.swift; sourceTree = "<group>"; };
 		D6B0E17D2A841B6A0044895E /* MasterMixologist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterMixologist.swift; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 				D6E15A672AD58DCD00A36E76 /* TheFirstRuleOfPoetryClub .swift */,
 				D6C904712AD89FCB00F3FE24 /* LasagnaMaster.swift */,
 				D64848742AF97B8900798430 /* WindowingSystem.swift */,
+				D678D7FA2B2F55790074CE44 /* Gigasecond.swift */,
 			);
 			path = ExercismWithTestsTests;
 			sourceTree = "<group>";
@@ -254,6 +257,7 @@
 				D6F26A402AD364360022EE72 /* HighScoreBoard.swift in Sources */,
 				D606E78A2A69BCC000449145 /* LayersOfLasagna.swift in Sources */,
 				D6E15A682AD58DCD00A36E76 /* TheFirstRuleOfPoetryClub .swift in Sources */,
+				D678D7FB2B2F55790074CE44 /* Gigasecond.swift in Sources */,
 				D64848752AF97B8900798430 /* WindowingSystem.swift in Sources */,
 				D6FC61DA2A79B953008C745E /* VexingVehiclePurchase.swift in Sources */,
 				D606E77F2A69B46800449145 /* HelloWorld.swift in Sources */,
