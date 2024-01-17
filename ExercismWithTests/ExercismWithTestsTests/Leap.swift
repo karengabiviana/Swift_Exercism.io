@@ -19,9 +19,44 @@ import XCTest
 //For example, 1997 is not a leap year, but 1996 is. 1900 is not a leap year, but 2000 is.
 
 class Year {
-    // Write your code for the 'Leap' exercise in this file.
+    struct Leap {
+        let divisibleBy4 = true
+        let divisibleBy100 = false
+        let divisibleBy400 = true
+    }
+
+    func isLeap(year: Date) -> Bool {
+        true
+    }
 }
 
 class LeapTests: XCTestCase {
-    // Write your tests for the 'Leap' exercise in this file.
+    func testIsLeap() {
+        //Arrange
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy"
+        dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+        let inputYearString = "2024"
+        let inputYear = dateFormatter.date(from: inputYearString)
+
+        //Act
+
+
+        //Assert
+
+
+    }
+func testIsNoLeap() {
+        //Arrange
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy"
+        dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+        let inputYearString = "2023"
+        let inputYear = dateFormatter.date(from: inputYearString)
+
+        //Act
+
+        //Assert
+
+    }
 }
