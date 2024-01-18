@@ -19,44 +19,57 @@ import XCTest
 //For example, 1997 is not a leap year, but 1996 is. 1900 is not a leap year, but 2000 is.
 
 class Year {
-    struct Leap {
-        let divisibleBy4 = true
-        let divisibleBy100 = false
-        let divisibleBy400 = true
-    }
 
-    func isLeap(year: Date) -> Bool {
-        true
+    func isLeap(year: Int) -> Bool {
+        if year % 4 != 0 {
+            return false
+        } else if year % 100 != 0 {
+            return true
+        } else if year % 400 != 0 {
+            return false
+        } else {
+            return true
+        }
     }
 }
 
 class LeapTests: XCTestCase {
     func testIsLeap() {
         //Arrange
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy"
-        dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
-        let inputYearString = "2024"
-        let inputYear = dateFormatter.date(from: inputYearString)
-
+        let year = Year()
+        let input = 1996
         //Act
-
-
+        let result = year.isLeap(year: input)
         //Assert
-
-
+        XCTAssertTrue(result)
     }
-func testIsNoLeap() {
+
+    func testIsNoLeap() {
         //Arrange
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy"
-        dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
-        let inputYearString = "2023"
-        let inputYear = dateFormatter.date(from: inputYearString)
-
+        let year = Year()
+        let input = 1997
         //Act
-
+        let result = year.isLeap(year: input)
         //Assert
+        XCTAssertFalse(result)
+    }
 
+    func testIsNoLeapDivisibleBy100() {
+        //Arrange
+        let year = Year()
+        let input = 1900
+        //Act
+        let result = year.isLeap(year: input)
+        //Assert
+        XCTAssertFalse(result)
+    }
+    func testIsLeapDivisibleBy400() {
+        //Arrange
+        let year = Year()
+        let input = 2000
+        //Act
+        let result = year.isLeap(year: input)
+        //Assert
+        XCTAssertTrue(result)
     }
 }
