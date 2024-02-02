@@ -43,7 +43,7 @@ class Year {
 class LeapTests: XCTestCase {
     func testIsLeap() {
         //Arrange
-        let year = Year()
+        let year = Year(calendarYear: <#Int#>)
         let input = 1996
         //Act
         let result = year.isLeap(year: input)
