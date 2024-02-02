@@ -20,6 +20,13 @@ import XCTest
 
 class Year {
 
+    let calendarYear: Int
+
+    init(calendarYear: Int) {
+        self.calendarYear = calendarYear
+    }
+
+
     func isLeap(year: Int) -> Bool {
         if year % 4 != 0 {
             return false
