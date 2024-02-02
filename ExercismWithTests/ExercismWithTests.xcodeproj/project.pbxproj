@@ -24,6 +24,7 @@
 		D6E360872A70758900BB8050 /* FreelancerRates.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E360862A70758900BB8050 /* FreelancerRates.swift */; };
 		D6E360892A71A57100BB8050 /* Cal'sCustomSignShop.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E360882A71A57100BB8050 /* Cal'sCustomSignShop.swift */; };
 		D6F26A402AD364360022EE72 /* HighScoreBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F26A3F2AD364360022EE72 /* HighScoreBoard.swift */; };
+		D6F526912B55693800DD3B36 /* Leap.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F526902B55693800DD3B36 /* Leap.swift */; };
 		D6FC5EDE2A731415008C745E /* SecretAgentDoubleNull0111.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FC5EDD2A731415008C745E /* SecretAgentDoubleNull0111.swift */; };
 		D6FC61DA2A79B953008C745E /* VexingVehiclePurchase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FC61D92A79B953008C745E /* VexingVehiclePurchase.swift */; };
 /* End PBXBuildFile section */
@@ -57,6 +58,7 @@
 		D6E360862A70758900BB8050 /* FreelancerRates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreelancerRates.swift; sourceTree = "<group>"; };
 		D6E360882A71A57100BB8050 /* Cal'sCustomSignShop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cal'sCustomSignShop.swift"; sourceTree = "<group>"; };
 		D6F26A3F2AD364360022EE72 /* HighScoreBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighScoreBoard.swift; sourceTree = "<group>"; };
+		D6F526902B55693800DD3B36 /* Leap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Leap.swift; sourceTree = "<group>"; };
 		D6FC5EDD2A731415008C745E /* SecretAgentDoubleNull0111.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretAgentDoubleNull0111.swift; sourceTree = "<group>"; };
 		D6FC61D92A79B953008C745E /* VexingVehiclePurchase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VexingVehiclePurchase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -126,6 +128,7 @@
 				D6C904712AD89FCB00F3FE24 /* LasagnaMaster.swift */,
 				D64848742AF97B8900798430 /* WindowingSystem.swift */,
 				D678D7FA2B2F55790074CE44 /* Gigasecond.swift */,
+				D6F526902B55693800DD3B36 /* Leap.swift */,
 			);
 			path = ExercismWithTestsTests;
 			sourceTree = "<group>";
@@ -255,6 +258,7 @@
 				D6FC5EDE2A731415008C745E /* SecretAgentDoubleNull0111.swift in Sources */,
 				D6B0E17A2A8281EB0044895E /* Santa'sSwiftyHelper.swift in Sources */,
 				D6F26A402AD364360022EE72 /* HighScoreBoard.swift in Sources */,
+				D6F526912B55693800DD3B36 /* Leap.swift in Sources */,
 				D606E78A2A69BCC000449145 /* LayersOfLasagna.swift in Sources */,
 				D6E15A682AD58DCD00A36E76 /* TheFirstRuleOfPoetryClub .swift in Sources */,
 				D678D7FB2B2F55790074CE44 /* Gigasecond.swift in Sources */,
