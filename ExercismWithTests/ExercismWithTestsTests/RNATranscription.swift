@@ -32,9 +32,44 @@ import XCTest
 //A -> U
 
 func toRna(_ dna: String) -> String {
-  // Write your code for the 'Rna Transcription' exercise in this file.
+// Write your code for the 'Rna Transcription' exercise in this file.
 }
 
 class RNATranscriptionTests: XCTestCase {
-    
+    func testToRNALowerCase() {
+        //Arrange
+        let input = "attcgagtcg"
+        let outputExpected = "UAAGCUCAGC"
+        //Act
+        let output = toRna(input)
+        //Assert
+        XCTAssertEqual(output, outputExpected)
+    }
+    func testToRNAUpperCase() {
+        //Arrange
+        let input = "ATTCGAGTCG"
+        let outputExpected = "UAAGCUCAGC"
+        //Act
+        let output = toRna(input)
+        //Assert
+        XCTAssertEqual(output, outputExpected)
+    }
+    func testToRNAInvalid() {
+        //Arrange
+        let input = "krxio"
+        let outputExpected = ""
+        //Act
+        let output = toRna(input)
+        //Assert
+        XCTAssertEqual(output, outputExpected)
+    }
+    func testToRNAPartInvalid() {
+        //Arrange
+        let input = "aktrcxgiuo"
+        let outputExpected = ""
+        //Act
+        let output = toRna(input)
+        //Assert
+        XCTAssertEqual(output, outputExpected)
+    }
 }
