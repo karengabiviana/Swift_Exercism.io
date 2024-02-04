@@ -19,20 +19,18 @@ import XCTest
 //For example, 1997 is not a leap year, but 1996 is. 1900 is not a leap year, but 2000 is.
 
 class Year {
-
     let calendarYear: Int
 
     init(calendarYear: Int) {
         self.calendarYear = calendarYear
     }
 
-
-    func isLeap(year: Int) -> Bool {
-        if year % 4 != 0 {
+    func isLeap() -> Bool {
+        if calendarYear % 4 != 0 {
             return false
-        } else if year % 100 != 0 {
+        } else if calendarYear % 100 != 0 {
             return true
-        } else if year % 400 != 0 {
+        } else if calendarYear % 400 != 0 {
             return false
         } else {
             return true
@@ -43,39 +41,44 @@ class Year {
 class LeapTests: XCTestCase {
     func testIsLeap() {
         //Arrange
-        let year = Year(calendarYear: <#Int#>)
-        let input = 1996
+        let year = Year(calendarYear: 1996)
+
         //Act
-        let result = year.isLeap(year: input)
+        let result = year.isLeap()
+
         //Assert
         XCTAssertTrue(result)
     }
 
     func testIsNoLeap() {
         //Arrange
-        let year = Year(calendarYear: <#Int#>)
-        let input = 1997
+        let year = Year(calendarYear: 1997)
+
         //Act
-        let result = year.isLeap(year: input)
+        let result = year.isLeap()
+
         //Assert
         XCTAssertFalse(result)
     }
 
     func testIsNoLeapDivisibleBy100() {
         //Arrange
-        let year = Year(calendarYear: <#Int#>)
-        let input = 1900
+        let year = Year(calendarYear: 1900)
+
         //Act
-        let result = year.isLeap(year: input)
+        let result = year.isLeap()
+
         //Assert
         XCTAssertFalse(result)
     }
+
     func testIsLeapDivisibleBy400() {
         //Arrange
-        let year = Year(calendarYear: <#Int#>)
-        let input = 2000
+        let year = Year(calendarYear: 2000)
+
         //Act
-        let result = year.isLeap(year: input)
+        let result = year.isLeap()
+
         //Assert
         XCTAssertTrue(result)
     }
