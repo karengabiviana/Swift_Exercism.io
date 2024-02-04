@@ -43,7 +43,7 @@ class Year {
 class LeapTests: XCTestCase {
     func testIsLeap() {
         //Arrange
-        let year = Year()
+        let year = Year(calendarYear: <#Int#>)
         let input = 1996
         //Act
         let result = year.isLeap(year: input)
@@ -53,7 +53,7 @@ class LeapTests: XCTestCase {
 
     func testIsNoLeap() {
         //Arrange
-        let year = Year()
+        let year = Year(calendarYear: <#Int#>)
         let input = 1997
         //Act
         let result = year.isLeap(year: input)
@@ -63,7 +63,7 @@ class LeapTests: XCTestCase {
 
     func testIsNoLeapDivisibleBy100() {
         //Arrange
-        let year = Year()
+        let year = Year(calendarYear: <#Int#>)
         let input = 1900
         //Act
         let result = year.isLeap(year: input)
@@ -72,7 +72,7 @@ class LeapTests: XCTestCase {
     }
     func testIsLeapDivisibleBy400() {
         //Arrange
-        let year = Year()
+        let year = Year(calendarYear: <#Int#>)
         let input = 2000
         //Act
         let result = year.isLeap(year: input)
