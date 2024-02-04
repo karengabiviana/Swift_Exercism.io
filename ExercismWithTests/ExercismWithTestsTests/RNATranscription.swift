@@ -32,7 +32,26 @@ import XCTest
 //A -> U
 
 func toRna(_ dna: String) -> String {
-// Write your code for the 'Rna Transcription' exercise in this file.
+    let dnaUpperCase = dna.uppercased()
+    let dnaArray = Array(dnaUpperCase)
+    var rna = ""
+    let sequences = dnaArray.count
+    for sequence in 0..<sequences {
+        switch dnaArray[sequence] {
+        case "G":
+            rna += "C"
+        case "C":
+            rna += "G"
+        case "T":
+            rna += "A"
+        case "A":
+            rna += "U"
+        default:
+            rna = ""
+        }
+    }
+
+    return rna
 }
 
 class RNATranscriptionTests: XCTestCase {
